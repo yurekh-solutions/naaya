@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef , useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -14,6 +14,8 @@ import officeImage from "../assets/office-building.jpg";
 import warehouseImage from "../assets/materials-warehouse.jpg";
 
 const About = () => {
+      const [step, setStep] = useState(1);
+  
   const statsRef = useRef(null);
   const valuesRef = useRef(null);
   const achievementsRef = useRef(null);
@@ -249,7 +251,9 @@ const About = () => {
       opacity: 1
     }
   };
-
+ useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
   return (
     <>
       <SEOHead

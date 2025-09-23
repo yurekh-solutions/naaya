@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Plus, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { Plus, Eye, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { useRFQStore } from "@/stores/rfqStore";
 import { useToast } from "@/hooks/use-toast";
 import { allProducts, Product } from "@/data/products";
@@ -27,6 +27,7 @@ const Products = () => {
   const [brand, setBrand] = useState("");
   const [material, setMaterial] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   const { addItem } = useRFQStore();
   const { toast } = useToast();
 
@@ -42,11 +43,18 @@ const Products = () => {
 
   // Filter + Shuffle products
   const filteredProducts = useMemo(() => {
-    const products = selectedCategory === "All" 
+    let products = selectedCategory === "All" 
       ? allProducts 
       : allProducts.filter(product => product.category === selectedCategory);
+
+    if (searchQuery.trim()) {
+      products = products.filter(product =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
     return shuffleArray(products);
-  }, [selectedCategory]);
+  }, [selectedCategory, searchQuery]);
 
   // Pagination
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -120,10 +128,10 @@ const Products = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="bg-gradient-primary rounded-lg py-20 mb-8">
-            <h1 className="text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
               Our Products
             </h1>
-            <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
               Discover our collection of premium products crafted with excellence
             </p>
             <Button 
@@ -133,6 +141,20 @@ const Products = () => {
             >
               Explore Collection
             </Button>
+          </div>
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex justify-center mb-8">
+          <div className="relative w-full max-w-md">
+            <Input
+              type="text"
+              placeholder="Search products by title..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 pr-4 bg-glass-bg border-glass-border"
+            />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           </div>
         </div>
 
@@ -324,7 +346,7 @@ const Products = () => {
 
         {/* Product Detail Modal */}
         <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
-          <DialogContent className="max-w-2xl bg-gradient-glass backdrop-blur-xl border-glass-border">
+          <DialogContent className="max-w-[95vw] sm:max-w-xl max-h-[90vh]  overflow-y-auto bg-gradient-glass backdrop-blur-xl border-glass-border">
             <DialogHeader>
               <DialogTitle className="text-xl font-bold text-foreground">
                 {selectedProduct?.name}
@@ -393,13 +415,13 @@ const Products = () => {
                       />
                     </div>
                   </div>
-                <Button
-onClick={handleAddToRFQ}
-className="w-full bg-gradient-primary hover:shadow-glow"
-disabled={isAddDisabled}
->
-Add to RFQ
-</Button>
+                  <Button
+                    onClick={handleAddToRFQ}
+                    className="w-full bg-gradient-primary hover:shadow-glow"
+                    disabled={isAddDisabled}
+                  >
+                    Add to RFQ
+                  </Button>
                 </div>
               </div>
             )}

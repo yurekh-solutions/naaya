@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,8 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import SEOHead from "@/components/SEOHead";
 
 const Contact = () => {
+    const [step, setStep] = useState(1);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -78,7 +80,9 @@ const Contact = () => {
   const handleInputChange = (field: string, value: string) => {
     setFormData({ ...formData, [field]: value });
   };
-
+ useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
   const validateForm = (type: string) => {
     const requiredFields = [
       { field: "firstName", label: "First name" },
@@ -179,7 +183,7 @@ const Contact = () => {
       const encodedWhatsAppMessage = encodeURIComponent(whatsappMessage);
       
       // Create WhatsApp URL
-      const phoneNumber = "917021341409";
+      const phoneNumber = "919930670707";
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedWhatsAppMessage}`;
       
       // Format email message
@@ -460,7 +464,7 @@ const Contact = () => {
         structuredData={structuredData}
       />
 
-      <div className="min-h-screen bg-gradient-subtle py-8">
+      <div className="min-h-screen bg-gradient-subtle ">
         {/* Hero Section */}
         <section className="py-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary-glow/5" />
@@ -537,7 +541,7 @@ const Contact = () => {
                 animate={isFormInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8 }}
               >
-                <GlassCard variant="premium" className="p-8 mt-10">
+                <GlassCard variant="premium" className="p-8 m-10">
                   <div className="mb-8">
                     <h2 className="text-3xl font-bold text-foreground mb-4">Contact Us</h2>
                     <p className="text-muted-foreground text-lg">
@@ -650,7 +654,7 @@ const Contact = () => {
                 animate={isContactInfoInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <GlassCard variant="premium" className="p-6">
+                <GlassCard variant="premium" className="p-6 mb-4">
                   <h3 className="text-xl font-semibold text-foreground mb-6">Business Hours</h3>
                   
                   <div className="space-y-4">
