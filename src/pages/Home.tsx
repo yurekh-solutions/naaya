@@ -363,7 +363,7 @@ const Home = () => {
         </section>
 
         {/* Enhanced Features Section */}
-        <section className="py-20 bg-white" ref={featuresRef}>
+        <section className="py-20 bg-gradient-secondary" ref={featuresRef}>
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
