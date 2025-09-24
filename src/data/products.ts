@@ -24,88 +24,58 @@ export interface Product {
   image: string;
   brand?: string;
   material?: string;
+  description?: string;
 }
 
 // Base product templates with unique images
 const productTemplates = [
   // Mild Steel Products
-  { name: "MS TMT BARS", category: "Mild Steel", image: msTmtBars },
-  { name: "MS SHEETS", category: "Mild Steel", image: msSheetsPlates },
-  { name: "MS PLATES", category: "Mild Steel", image: msSheetsPlates },
-  { name: "MS CHANNEL", category: "Mild Steel", image: msChannel },
-  { name: "MS BEAMS", category: "Mild Steel", image: msBeamsJoist },
-  { name: "MS JOIST", category: "Mild Steel", image: msBeamsJoist },
-  { name: "MS ANGLES", category: "Mild Steel", image: msAngles },
-  { name: "MS SQUARE PIPE", category: "Mild Steel", image: msSquarePipe },
-  { name: "MS ROUND BARS", category: "Mild Steel", image: msRoundBars },
-  { name: "HR COILS", category: "Mild Steel", image: hrCoils },
-  { name: "CR COILS", category: "Mild Steel", image: crCoils },
-  { name: "MS RECTANGULAR PIPE", category: "Mild Steel", image: msRoundPipes },
-  { name: "MS FLAT BARS", category: "Mild Steel", image: msSheetsPlates },
-  { name: "MS ROUND PIPE", category: "Mild Steel", image: msRoundPipes },
-  { name: "MS I-BEAMS", category: "Mild Steel", image: msBeamsJoist },
-  { name: "MS U-CHANNELS", category: "Mild Steel", image: msChannel },
-  { name: "MS EQUAL ANGLES", category: "Mild Steel", image: msAngles },
-  { name: "MS UNEQUAL ANGLES", category: "Mild Steel", image: msAngles },
-  { name: "MS HEXAGONAL BARS", category: "Mild Steel", image: msRoundBars },
-  { name: "MS SQUARE BARS", category: "Mild Steel", image: msSquarePipe },
+  { name: "MS TMT BARS", category: "Mild Steel", image: msTmtBars, description: "High-strength TMT bars for construction" },
+  { name: "MS SHEETS", category: "Mild Steel", image: msSheetsPlates, description: "Quality mild steel sheets for various applications" },
+  { name: "MS PLATES", category: "Mild Steel", image: msSheetsPlates, description: "Heavy duty mild steel plates" },
+  { name: "MS CHANNEL", category: "Mild Steel", image: msChannel, description: "Structural steel channels for construction" },
+  { name: "MS BEAMS", category: "Mild Steel", image: msBeamsJoist, description: "Load-bearing steel beams" },
+  { name: "MS JOIST", category: "Mild Steel", image: msBeamsJoist, description: "Steel joists for structural support" },
+  { name: "MS ANGLES", category: "Mild Steel", image: msAngles, description: "L-shaped steel angles" },
+  { name: "MS SQUARE PIPE", category: "Mild Steel", image: msSquarePipe, description: "Square hollow steel pipes" },
+  { name: "MS ROUND BARS", category: "Mild Steel", image: msRoundBars, description: "Solid round steel bars" },
+  { name: "HR COILS", category: "Mild Steel", image: hrCoils, description: "Hot rolled steel coils" },
+  { name: "CR COILS", category: "Mild Steel", image: crCoils, description: "Cold rolled steel coils" },
+  { name: "MS RECTANGULAR PIPE", category: "Mild Steel", image: msRoundPipes, description: "Rectangular hollow steel pipes" },
+  { name: "MS FLAT BARS", category: "Mild Steel", image: msSheetsPlates, description: "Flat steel bars for various uses" },
+  { name: "MS ROUND PIPE", category: "Mild Steel", image: msRoundPipes, description: "Round hollow steel pipes" },
 
   // Stainless Steel Products
-  { name: "SS SHEETS", category: "Stainless Steel", image: ssSheets },
-  { name: "SS PLATES", category: "Stainless Steel", image: ssSheets },
-  { name: "SS COILS", category: "Stainless Steel", image: ssSheets },
-  { name: "SS ERW PIPES", category: "Stainless Steel", image: ssPipes },
-  { name: "SS ROUND BARS", category: "Stainless Steel", image: msRoundBars },
-  { name: "SS SQUARE PIPES", category: "Stainless Steel", image: msSquarePipe },
-  { name: "SS RECTANGULAR PIPES", category: "Stainless Steel", image: msRoundPipes },
-  { name: "SS CHANNELS", category: "Stainless Steel", image: steelChannelsImg },
-  { name: "SS ANGLES", category: "Stainless Steel", image: msAngles },
-  { name: "SS FLAT BARS", category: "Stainless Steel", image: ssSheets },
-  { name: "SS HEXAGONAL BARS", category: "Stainless Steel", image: msRoundBars },
-  { name: "SS SQUARE BARS", category: "Stainless Steel", image: msSquarePipe },
-  { name: "SS SEAMLESS PIPES", category: "Stainless Steel", image: ssPipes },
-  { name: "SS WELDED PIPES", category: "Stainless Steel", image: ssPipes },
-  { name: "SS WIRE RODS", category: "Stainless Steel", image: msTmtBars },
-  { name: "SS PERFORATED SHEETS", category: "Stainless Steel", image: ssSheets },
-  { name: "SS CHECKERED PLATES", category: "Stainless Steel", image: ssSheets },
-  { name: "SS HOLLOW BARS", category: "Stainless Steel", image: msRoundBars },
+  { name: "SS SHEETS", category: "Stainless Steel", image: ssSheets, description: "Premium stainless steel sheets" },
+  { name: "SS PLATES", category: "Stainless Steel", image: ssSheets, description: "Corrosion-resistant SS plates" },
+  { name: "SS COILS", category: "Stainless Steel", image: ssSheets, description: "Stainless steel coils" },
+  { name: "SS ERW PIPES", category: "Stainless Steel", image: ssPipes, description: "Electric resistance welded SS pipes" },
+  { name: "SS ROUND BARS", category: "Stainless Steel", image: msRoundBars, description: "Solid stainless steel bars" },
+  { name: "SS SQUARE PIPES", category: "Stainless Steel", image: msSquarePipe, description: "Square stainless steel pipes" },
+  { name: "SS RECTANGULAR PIPES", category: "Stainless Steel", image: msRoundPipes, description: "Rectangular SS pipes" },
+  { name: "SS CHANNELS", category: "Stainless Steel", image: steelChannelsImg, description: "Stainless steel channels" },
+  { name: "SS ANGLES", category: "Stainless Steel", image: msAngles, description: "Stainless steel angles" },
+  { name: "SS FLAT BARS", category: "Stainless Steel", image: ssSheets, description: "Flat stainless steel bars" },
 
   // Construction Materials
-  { name: "CEMENT", category: "Construction Materials", image: cement },
-  { name: "CONCRETE BLOCKS", category: "Construction Materials", image: steelSheetsImg },
-  { name: "BRICKS", category: "Construction Materials", image: steelSheetsImg },
-  { name: "SAND", category: "Construction Materials", image: steelSheetsImg },
-  { name: "GRAVEL", category: "Construction Materials", image: steelSheetsImg },
-  { name: "STONE AGGREGATES", category: "Construction Materials", image: steelSheetsImg },
-  { name: "READY MIX CONCRETE", category: "Construction Materials", image: steelSheetsImg },
-  { name: "BITUMEN", category: "Construction Materials", image: steelSheetsImg },
-  { name: "ROOFING SHEETS", category: "Construction Materials", image: steelSheetsImg },
-  { name: "WATERPROOFING MEMBRANE", category: "Construction Materials", image: steelSheetsImg },
-  { name: "INSULATION MATERIALS", category: "Construction Materials", image: steelSheetsImg },
-  { name: "TILE ADHESIVE", category: "Construction Materials", image: steelSheetsImg },
-  { name: "WALL PUTTY", category: "Construction Materials", image: steelSheetsImg },
-  { name: "PLASTER OF PARIS", category: "Construction Materials", image: steelSheetsImg },
-  { name: "CERAMIC TILES", category: "Construction Materials", image: steelSheetsImg },
-  { name: "VITRIFIED TILES", category: "Construction Materials", image: steelSheetsImg },
-  { name: "MARBLE", category: "Construction Materials", image: steelSheetsImg },
-  { name: "GRANITE", category: "Construction Materials", image: steelSheetsImg },
+  { name: "CEMENT", category: "Construction Materials", image: cement, description: "High-grade construction cement" },
+  { name: "CONCRETE BLOCKS", category: "Construction Materials", image: steelSheetsImg, description: "Precast concrete blocks" },
+  { name: "BRICKS", category: "Construction Materials", image: steelSheetsImg, description: "Quality construction bricks" },
+  { name: "SAND", category: "Construction Materials", image: steelSheetsImg, description: "Construction grade sand" },
+  { name: "GRAVEL", category: "Construction Materials", image: steelSheetsImg, description: "Construction gravel" },
+  { name: "STONE AGGREGATES", category: "Construction Materials", image: steelSheetsImg, description: "Stone aggregates for concrete" },
+  { name: "READY MIX CONCRETE", category: "Construction Materials", image: steelSheetsImg, description: "Ready-to-use concrete mix" },
+  { name: "ROOFING SHEETS", category: "Construction Materials", image: steelSheetsImg, description: "Durable roofing sheets" },
 
   // Electrical Materials
-  { name: "ELECTRICAL CABLES", category: "Electrical Materials", image: electricalCables },
-  { name: "PVC CONDUITS", category: "Electrical Materials", image: steelPipesImg },
-  { name: "COPPER WIRES", category: "Electrical Materials", image: steelPipesImg },
-  { name: "ALUMINUM WIRES", category: "Electrical Materials", image: steelPipesImg },
-  { name: "ELECTRICAL PANELS", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "SWITCHGEAR", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "TRANSFORMERS", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "CIRCUIT BREAKERS", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "ELECTRICAL FITTINGS", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "JUNCTION BOXES", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "CABLE TRAYS", category: "Electrical Materials", image: steelChannelsImg },
-  { name: "EARTHING MATERIALS", category: "Electrical Materials", image: steelPipesImg },
-  { name: "LIGHTING FIXTURES", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "ELECTRICAL METERS", category: "Electrical Materials", image: steelSheetsImg },
-  { name: "MOTOR CONTROL PANELS", category: "Electrical Materials", image: steelSheetsImg }
+  { name: "ELECTRICAL CABLES", category: "Electrical Materials", image: electricalCables, description: "High-quality electrical cables" },
+  { name: "PVC CONDUITS", category: "Electrical Materials", image: steelPipesImg, description: "PVC electrical conduits" },
+  { name: "COPPER WIRES", category: "Electrical Materials", image: steelPipesImg, description: "Pure copper electrical wires" },
+  { name: "ALUMINUM WIRES", category: "Electrical Materials", image: steelPipesImg, description: "Aluminum electrical wires" },
+  { name: "ELECTRICAL PANELS", category: "Electrical Materials", image: steelSheetsImg, description: "Electrical distribution panels" },
+  { name: "SWITCHGEAR", category: "Electrical Materials", image: steelSheetsImg, description: "Industrial switchgear" },
+  { name: "TRANSFORMERS", category: "Electrical Materials", image: steelSheetsImg, description: "Power transformers" },
+  { name: "CIRCUIT BREAKERS", category: "Electrical Materials", image: steelSheetsImg, description: "Electrical circuit breakers" },
 ];
 
 // Brands and specifications
@@ -119,7 +89,7 @@ export const generateProducts = (): Product[] => {
   let productId = 1;
 
   productTemplates.forEach(template => {
-    const variantsCount = Math.floor(Math.random() * 6) + 20; // 20-25 variants
+    const variantsCount = Math.floor(Math.random() * 8) + 15; // 15-23 variants
 
     for (let i = 0; i < variantsCount; i++) {
       const brand = brands[Math.floor(Math.random() * brands.length)];
@@ -130,12 +100,12 @@ export const generateProducts = (): Product[] => {
 
       if (template.category === "Mild Steel" || template.category === "Stainless Steel") {
         productName += ` ${size}`;
-        if (Math.random() > 0.5) {
+        if (Math.random() > 0.4) {
           productName += ` ${grade}`;
         }
       }
 
-      if (Math.random() > 0.3) {
+      if (Math.random() > 0.2) {
         productName += ` - ${brand}`;
       }
 
@@ -145,7 +115,8 @@ export const generateProducts = (): Product[] => {
         category: template.category,
         image: template.image,
         brand: brand,
-        material: grade
+        material: grade,
+        description: template.description
       });
 
       productId++;

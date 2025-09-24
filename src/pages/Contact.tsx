@@ -47,7 +47,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone Support",
-      value: "+91 84250 47309",
+      value: "+91 70390 47070",
       description: "Direct line to our support team",
       available: "24/7 Available",
       action: "tel:+918425047309"
@@ -55,15 +55,15 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Support",
-      value: "yuvraj@naayatrade.com",
+      value: "construction@naayatrade.com",
       description: "Detailed inquiries and documentation",
       available: "Response within 1 hour",
-      action: "mailto:yuvraj@naayatrade.com"
+      action: "mailto:construction@naayatrade.com"
     },
     {
       icon: MapPin,
       title: "Office Location",
-      value: "Mumbai, Maharashtra",
+      value: "Hill View Apartments, 302, 2, Hill Rd, W, Bandra West, Mumbai, Maharashtra 400050",
       description: "Visit our headquarters",
       available: "Mon-Fri: 9AM-6PM",
       action: null
@@ -193,7 +193,7 @@ const Contact = () => {
       const encodedEmailBody = encodeURIComponent(emailMessage);
       
       // Create email URL
-      const emailUrl = `mailto:yuvraj@naayatrade.com?subject=${encodedEmailSubject}&body=${encodedEmailBody}`;
+      const emailUrl = `mailto:construction@naayatrade.com?subject=${encodedEmailSubject}&body=${encodedEmailBody}`;
       
       // Open WhatsApp first (primary method)
       window.open(whatsappUrl, '_blank');
@@ -238,9 +238,9 @@ const Contact = () => {
       animate={isFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <div className="text-center lg:text-left mb-8">
-        <h3 className="text-2xl font-semibold text-foreground mb-3">{type}</h3>
-        <p className="text-muted-foreground leading-relaxed">
+      <div className="text-center lg:text-left mb-6">
+        <h3 className="text-xl lg:text-2xl font-semibold text-foreground mb-2">{type}</h3>
+        <p className="text-muted-foreground text-sm lg:text-base leading-relaxed">
           {type === "General Enquiry" && "Have a question? We're here to help with any general inquiries about our platform, services, or partnerships."}
           {type === "Become a Supplier" && "Join our network of trusted suppliers and grow your business with us. Access thousands of potential customers across India."}
           {type === "Partnership" && "Explore partnership opportunities and collaborate with us to revolutionize the construction material Naayaconstruction industry."}
@@ -248,7 +248,7 @@ const Contact = () => {
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={isFormInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
@@ -281,7 +281,7 @@ const Contact = () => {
         </motion.div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={isFormInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
@@ -427,7 +427,7 @@ const Contact = () => {
       "@type": "Organization",
       "name": "NaayaConstruction",
       "telephone": "+91-84250-47309",
-      "email": "yuvraj@naayatrade.com",
+      "email": "construction@naayatrade.com",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "IN",
@@ -481,7 +481,7 @@ const Contact = () => {
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          <div className="relative container mx-auto px-4">
+          <div className="relative container mx-auto px-4 ">
             <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: 40 }}
@@ -532,8 +532,8 @@ const Contact = () => {
           </div>
         </section>
 
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="container mx-auto px-4 pb-12 mt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Enhanced Contact Form */}
             <div className="lg:col-span-2" ref={formRef}>
               <motion.div
@@ -541,16 +541,16 @@ const Contact = () => {
                 animate={isFormInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8 }}
               >
-                <GlassCard variant="premium" className="p-8 m-10">
-                  <div className="mb-8">
-                    <h2 className="text-3xl font-bold text-foreground mb-4">Contact Us</h2>
-                    <p className="text-muted-foreground text-lg">
+                <GlassCard variant="premium" className="p-6 lg:p-8">
+                  <div className="mb-6">
+                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">Contact Us</h2>
+                    <p className="text-muted-foreground text-base lg:text-lg">
                       Choose the type of inquiry that best matches your needs for faster, more targeted assistance.
                     </p>
                   </div>
 
                   <Tabs defaultValue="general" className="w-full">
-                    <TabsList className="grid w-full grid-cols-4 mb-8 glass-morphism bg-glass-bg/50 backdrop-blur-sm p-1">
+                    <TabsList className="grid w-full grid-cols-4 mb-6 glass-morphism bg-glass-bg/50 backdrop-blur-sm p-1">
                       <TabsTrigger 
                         value="general" 
                         className="flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300"
@@ -602,7 +602,7 @@ const Contact = () => {
             </div>
 
             {/* Enhanced Contact Info Sidebar */}
-            <div className="space-y-8 mt-10" ref={contactInfoRef}>
+            <div className="space-y-6" ref={contactInfoRef}>
               {/* Contact Methods */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -631,7 +631,7 @@ const Contact = () => {
                             <p className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                               {method.title}
                             </p>
-                            <p className="text-sm text-muted-foreground break-all">
+                            <p className={`text-sm text-muted-foreground ${method.title === 'Office Location' ? 'break-words' : 'break-all'}`}>
                               {method.value}
                             </p>
                             <p className="text-xs text-muted-foreground mt-1">
@@ -654,7 +654,7 @@ const Contact = () => {
                 animate={isContactInfoInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <GlassCard variant="premium" className="p-6 mb-4">
+                <GlassCard variant="premium" className="p-4 lg:p-6 mb-4">
                   <h3 className="text-xl font-semibold text-foreground mb-6">Business Hours</h3>
                   
                   <div className="space-y-4">
@@ -664,7 +664,7 @@ const Contact = () => {
                     </div>
                     <div className="flex justify-between items-center py-2 border-b border-glass-border">
                       <span className="text-muted-foreground">Saturday</span>
-                      <span className="text-foreground font-medium">9:00 AM - 2:00 PM</span>
+                      <span className="text-foreground font-medium">9:00 AM - 4:00 PM</span>
                     </div>
                     <div className="flex justify-between items-center py-2">
                       <span className="text-muted-foreground">Sunday</span>
@@ -681,42 +681,39 @@ const Contact = () => {
                 </GlassCard>
               </motion.div>
 
-              {/* Office Features */}
-              {/* <motion.div
+              {/* Google Maps Location */}
+            
+            </div>
+          </div>
+            <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={isContactInfoInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <GlassCard variant="premium" className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-6">Visit Our Office</h3>
+                  <h3 className="text-xl font-semibold text-foreground mb-6">Find Us</h3>
                   
-                  <div className="space-y-4">
-                    {officeFeatures.map((feature, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex items-start space-x-3"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={isContactInfoInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                        transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                      >
-                        <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </motion.div>
-                    ))}
+                  <div className="rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0234589394357!2d72.8241995759203!3d19.056699552892843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce40f07dc9a1%3A0x2540418065ef0594!2sHill%20View%20Apartments%2C%20302%2C%202%2C%20Hill%20Rd%2C%20W%2C%20Bandra%20West%2C%20Mumbai%2C%20Maharashtra%20400050!5e0!3m2!1sen!2sin!4v1696150000000!5m2!1sen!2sin"
+                      width="100%"
+                      height="350"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="rounded-lg"
+                    ></iframe>
                   </div>
-
-                  <div className="mt-6">
-                    <Button 
-                      variant="outline" 
-                      className="w-full glass-morphism border-primary/30 text-primary hover:bg-primary/10"
-                    >
-                      Schedule Office Visit
-                    </Button>
+                  
+                  <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/20">
+                    <p className="text-sm text-primary font-medium mb-2" >Office Address</p>
+                    <p className="text-xs text-muted-foreground">
+                      Hill View Apartments, 302, 2, Hill Rd, W, Bandra West, Mumbai, Maharashtra 400050
+                    </p>
                   </div>
                 </GlassCard>
-              </motion.div> */}
-            </div>
-          </div>
+              </motion.div>
         </div>
       </div>
     </>

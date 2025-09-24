@@ -14,6 +14,7 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
     { name: "About Us", href: "/about" },
+    { name: "Blogs", href: "http://naayaconstruction.blog/", external: true }, // ✅ external link
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -26,33 +27,55 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-glow">
-              <img src={logo} alt="NaayaConstruction Logo" className="w-8 h-8 object-contain" />
+              <img
+                src={logo}
+                alt="NaayaConstruction Logo"
+                className="w-8 h-8 object-contain"
+              />
             </div>
-            <span className="text-xl font-bold text-foreground">NaayaConstruction</span>
+            <span className="text-xl font-bold text-foreground">
+              NaayaConstruction
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`transition-colors duration-200 ${
-                  isActive(item.href)
-                    ? "text-primary font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-200 text-muted-foreground hover:text-foreground"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`transition-colors duration-200 ${
+                    isActive(item.href)
+                      ? "text-primary font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Cart and Mobile Menu */}
           <div className="flex items-center space-x-4">
             {/* Cart */}
             <Link to="/cart">
-              <Button variant="outline" size="sm" className="relative bg-glass-bg border-glass-border">
+              <Button
+                variant="outline"
+                size="sm"
+                className="relative bg-glass-bg border-glass-border"
+              >
                 <ShoppingCart className="h-4 w-4" />
                 {items.length > 0 && (
                   <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
@@ -78,20 +101,33 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-gradient-glass backdrop-blur-xl shadow-glass border-t border-glass-border">
             <div className="px-4 py-6 space-y-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`block px-3 py-2 rounded-md text-base transition-colors duration-200 ${
-                    isActive(item.href)
-                      ? "text-primary bg-primary/10 font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/10"
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) =>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-2 rounded-md text-base text-muted-foreground hover:text-foreground hover:bg-muted/10"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`block px-3 py-2 rounded-md text-base transition-colors duration-200 ${
+                      isActive(item.href)
+                        ? "text-primary bg-primary/10 font-semibold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted/10"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
             </div>
           </div>
         )}

@@ -8,44 +8,43 @@ export interface RFQItem {
   brand: string;
   material: string;
   quantity: number;
-  image?: string;
+  image: string;
 }
 
 interface RFQStore {
   items: RFQItem[];
   addItem: (item: RFQItem) => void;
   removeItem: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
+  updateItemQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  getTotalItems: () => number;
 }
 
 export const useRFQStore = create<RFQStore>()(
   persist(
     (set, get) => ({
       items: [],
-      addItem: (item) =>
-        set((state) => {
-          const existingItem = state.items.find((i) => i.id === item.id);
-          if (existingItem) {
-            return {
-              items: state.items.map((i) =>
-                i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
-              ),
-            };
-          }
-          return { items: [...state.items, item] };
-        }),
-      removeItem: (id) =>
-        set((state) => ({
-          items: state.items.filter((item) => item.id !== id),
-        })),
-      updateQuantity: (id, quantity) =>
-        set((state) => ({
-          items: state.items.map((item) =>
-            item.id === id ? { ...item, quantity } : item
-          ),
-        })),
+      
+      addItem: (item) => set((state) => ({
+        items: [...state.items, item]
+      })),
+      
+      removeItem: (id) => set((state) => ({
+        items: state.items.filter(item => item.id !== id)
+      })),
+      
+      updateItemQuantity: (id, quantity) => set((state) => ({
+        items: state.items.map(item =>
+          item.id === id ? { ...item, quantity } : item
+        )
+      })),
+      
       clearCart: () => set({ items: [] }),
+      
+      getTotalItems: () => {
+        const { items } = get();
+        return items.reduce((total, item) => total + item.quantity, 0);
+      }
     }),
     {
       name: 'rfq-storage',

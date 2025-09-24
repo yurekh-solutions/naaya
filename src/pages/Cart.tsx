@@ -166,7 +166,7 @@ const Cart = () => {
           <div className="space-y-6">
             <GlassCard className="p-6">
               <h2 className="text-xl font-semibold text-foreground mb-6">Customer Information</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                 <div>
                   <Label htmlFor="name">Name *</Label>
                   <Input
@@ -174,7 +174,7 @@ const Cart = () => {
                     placeholder="Your name"
                     value={customerData.name}
                     onChange={(e) => setCustomerData({ ...customerData, name: e.target.value })}
-                    className="bg-glass-bg border-glass-border"
+                    className="bg-glass-bg border-glass-border mt-2"
                   />
                 </div>
                 <div>
@@ -184,7 +184,7 @@ const Cart = () => {
                     placeholder="Your company name"
                     value={customerData.company}
                     onChange={(e) => setCustomerData({ ...customerData, company: e.target.value })}
-                    className="bg-glass-bg border-glass-border"
+                    className="bg-glass-bg border-glass-border mt-2"
                   />
                 </div>
                 <div>
@@ -194,7 +194,7 @@ const Cart = () => {
                     placeholder="Delivery location"
                     value={customerData.location}
                     onChange={(e) => setCustomerData({ ...customerData, location: e.target.value })}
-                    className="bg-glass-bg border-glass-border"
+                    className="bg-glass-bg border-glass-border mt-2"
                   />
                 </div>
                 <div>
@@ -205,7 +205,7 @@ const Cart = () => {
                     placeholder="Your email"
                     value={customerData.email}
                     onChange={(e) => setCustomerData({ ...customerData, email: e.target.value })}
-                    className="bg-glass-bg border-glass-border"
+                    className="bg-glass-bg border-glass-border mt-2"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -215,7 +215,7 @@ const Cart = () => {
                     placeholder="Your phone number"
                     value={customerData.phone}
                     onChange={(e) => setCustomerData({ ...customerData, phone: e.target.value })}
-                    className="bg-glass-bg border-glass-border"
+                    className="bg-glass-bg border-glass-border mt-2"
                   />
                 </div>
               </div>
