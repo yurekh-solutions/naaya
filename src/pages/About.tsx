@@ -3,7 +3,7 @@ import { useRef , useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Shield, Zap, Users, Globe, Award, Target, TrendingUp, Building, Calendar, DollarSign, Truck, CheckCircle, Star, Users2 } from "lucide-react";
+import { Shield, Zap, Users, Globe, Award, Target, TrendingUp, Building, Download, Smartphone, Laptop, Calendar, DollarSign, Truck, CheckCircle, Star, Users2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -12,18 +12,29 @@ import SEOHead from "@/components/SEOHead";
 import material from "../assets/materials-warehouse.jpg";
 import officeImage from "../assets/office-building.jpg";
 import warehouseImage from "../assets/materials-warehouse.jpg";
-
+import ImageCarousel from "@/components/ImageCarousel";
+import materialWarehouse from "../assets/materials-warehouse.jpg";
+import officeBuilding from "../assets/office-building.jpg";
+import constructionSite from "../assets/construction-site.jpg";
+import aiDashboard from "../assets/ai-dashboard.jpg";
 const About = () => {
       const [step, setStep] = useState(1);
   
   const statsRef = useRef(null);
   const valuesRef = useRef(null);
   const achievementsRef = useRef(null);
-  
+    const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef, { once: true });
+
   const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
   const isValuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
   const isAchievementsInView = useInView(achievementsRef, { once: true, margin: "-100px" });
-
+ const carouselImages = [
+    materialWarehouse,
+    constructionSite,
+    aiDashboard,
+    officeBuilding
+  ];
   const values = [
     {
       icon: Shield,
@@ -314,7 +325,7 @@ const About = () => {
             </motion.div>
 
             <motion.h1
-              className="text-5xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+              className="text-3xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
@@ -361,7 +372,137 @@ const About = () => {
             </motion.div>
           </div>
         </section>
+ <section ref={heroRef} className="relative py-24 lg:py-32 overflow-hidden">
+          {/* Animated Background Blobs */}
+          <motion.div
+            className="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-blob"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={isHeroInView ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0 }}
+            transition={{ duration: 2 }}
+          />
+          <motion.div
+            className="absolute -bottom-40 -right-40 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-blob"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={isHeroInView ? { opacity: 0.4, scale: 1 } : { opacity: 0, scale: 0 }}
+            transition={{ duration: 2, delay: 0.5 }}
+          />
 
+          <div className="relative container mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left Side - Image Carousel */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, x: -100, rotateY: -15 }}
+                animate={isHeroInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -15 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <div className="relative transform-3d">
+                  <GlassCard variant="premium" className="p-2 animate-float-3d">
+                    <ImageCarousel 
+                      images={carouselImages}
+                      className="h-96 lg:h-[500px]"
+                      autoPlay={true}
+                      interval={5000}
+                    />
+                  </GlassCard>
+                  
+                  {/* Floating Device Mockups */}
+                  <motion.div
+                    className="absolute -top-6 -right-6 glass-morphism p-4 rounded-xl"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Smartphone className="h-8 w-8 text-primary" />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute -bottom-6 -left-6 glass-morphism p-4 rounded-xl"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Laptop className="h-8 w-8 text-accent" />
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Right Side - Content with Download */}
+              <motion.div
+                className="space-y-8"
+                initial={{ opacity: 0, x: 100 }}
+                animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+                transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              >
+                
+
+                <motion.h1
+                  className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  About NaayaConstruction
+                </motion.h1>
+
+                <motion.p
+                  className="text-xl text-muted-foreground leading-relaxed"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+                  transition={{ delay: 0.7, duration: 1 }}
+                >
+                  NaayaConstruction is India's premier platform for buying and selling industrial products and 
+                  services, backed by the legacy of L&T — a leader in manufacturing, building, and construction. 
+                  We are revolutionizing the B2B marketplace by empowering businesses, especially MSMEs, to source 
+                  their industrial needs seamlessly, digitally, and cost-effectively.
+                </motion.p>
+
+                <motion.p
+                  className="text-lg text-muted-foreground leading-relaxed"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+                  transition={{ delay: 0.9, duration: 1 }}
+                >
+                  Our team of over 500 dedicated members is committed to transforming the way businesses operate. 
+                  As an integrated solution, NaayaConstruction goes beyond merely connecting buyers and sellers. 
+                  Our platform offers an extensive range of products across 50+ categories, along with end-to-end 
+                  support for financing and logistics through carefully vetted partners.
+                </motion.p>
+
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ delay: 1.1, duration: 0.8 }}
+                >
+                  <Button
+                    size="lg"
+                    className="btn-3d text-lg px-8 py-4 group"
+                    onClick={() => {
+                      // Create a downloadable brochure
+                      const link = document.createElement('a');
+                      link.href = '#';
+                      link.download = 'NaayaConstruction-Brochure.pdf';
+                      link.click();
+                    }}
+                  >
+                    <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+                    Download Brochure
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="glass-morphism border-primary/30 text-primary hover:bg-primary/10 text-lg px-8 py-4"
+                  >
+                    <Link to="/contact" className="flex items-center">
+                      <Users2 className="h-5 w-5 mr-2" />
+                      Contact Us
+                    </Link>
+                  </Button>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
         {/* Dynamic Stats Section */}
         <section className="py-20 bg-gradient-subtle" ref={statsRef}>
           <div className="container mx-auto px-4">
@@ -547,7 +688,7 @@ const About = () => {
         </section>
 
         {/* Enhanced Journey Section with Dynamic Timeline */}
-        <section className="py-20 bg-gradient-secondary">
+        {/* <section className="py-20 bg-gradient-secondary">
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-20"
@@ -570,10 +711,56 @@ const About = () => {
 
             <DynamicTimeline milestones={milestones} />
           </div>
-        </section>
+        </section> */}
 
         {/* Core Values Enhanced */}
-        <section className="py-20" ref={valuesRef}>
+       
+
+        {/* Achievements Section */}
+        <section className="py-20 bg-gradient-secondary" ref={achievementsRef}>
+          <div className="container mx-auto px-4">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isAchievementsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Badge className="mb-4 bg-accent/10 text-accent border-accent/30">
+                Achievements
+              </Badge>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                Recognition & Milestones
+              </h2>
+              <div className="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {achievements.map((achievement, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={isAchievementsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                >
+                  <GlassCard variant="premium" className="p-8 h-full">
+                    <h3 className="text-xl font-semibold text-foreground mb-6 text-center">
+                      {achievement.title}
+                    </h3>
+                    <div className="space-y-4">
+                      {achievement.items.map((item, itemIndex) => (
+                        <div key={itemIndex} className="flex items-start space-x-3">
+                          <Award className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                          <span className="text-muted-foreground">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+ <section className="py-20" ref={valuesRef}>
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
@@ -620,54 +807,8 @@ const About = () => {
             </motion.div>
           </div>
         </section>
-
-        {/* Achievements Section */}
-        <section className="py-20 bg-gradient-secondary" ref={achievementsRef}>
-          <div className="container mx-auto px-4">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isAchievementsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Badge className="mb-4 bg-accent/10 text-accent border-accent/30">
-                Achievements
-              </Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Recognition & Milestones
-              </h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
-            </motion.div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isAchievementsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                >
-                  <GlassCard variant="premium" className="p-8 h-full">
-                    <h3 className="text-xl font-semibold text-foreground mb-6 text-center">
-                      {achievement.title}
-                    </h3>
-                    <div className="space-y-4">
-                      {achievement.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="flex items-start space-x-3">
-                          <Award className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Testimonials Carousel */}
-        <section className="py-20">
+        <section className="py-20   bg-gradient-subtle">
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"

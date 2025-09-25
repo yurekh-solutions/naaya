@@ -13,6 +13,9 @@ import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+// import Terms from "./pages/TermsCondition";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,10 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
                         <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
+
+          {/* <Route path="/termsCondition" element={<TermsCondition />} /> */}
 
               <Route path="/cart" element={<Cart />} />
               <Route path="/about" element={<About />} />

@@ -12,8 +12,9 @@ const Header = () => {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Products", href: "/products" },
     { name: "About Us", href: "/about" },
+        { name: "Products", href: "/products" },
+
     { name: "Blogs", href: "http://naayaconstruction.blog/", external: true }, // ✅ external link
     { name: "Contact Us", href: "/contact" },
   ];
