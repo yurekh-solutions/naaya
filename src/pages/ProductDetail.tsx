@@ -47,33 +47,28 @@ const getAdditionalInfo = (product: any) => {
     "Mild Steel": [
       "Manufactured as per IS standards",
       "Available in various sizes and specifications",
-      "Suitable for welding and machining",
-      "Competitive pricing with bulk discounts"
+    
     ],
     "Stainless Steel": [
       "Available in different grades (304, 316, 201)",
       "Excellent formability and weldability",
-      "Suitable for food processing equipment",
-      "Long-term cost effectiveness"
+    
     ],
     "Construction Materials": [
       "Meets BIS quality specifications",
       "Environment-friendly manufacturing",
-      "Regular quality testing protocols",
-      "Fast delivery and logistics support"
+   
     ],
     "Electrical Materials": [
       "ISI marked for quality assurance",
       "Fire retardant properties",
-      "Easy installation and maintenance",
-      "Energy efficient solutions"
+    
     ]
   };
   return additionalInfo[product.category] || [
     "Premium quality assurance",
     "Industry standard compliance",
-    "Reliable supply chain",
-    "Technical support available"
+   
   ];
 };
 
@@ -234,7 +229,7 @@ const ProductDetail = () => {
             {/* Product Header */}
             <GlassCard variant="premium" className="p-4 sm:p-6">
               <div className="text-center sm:text-left">
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
+                <h1 className="text-xl sm:text-2xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
                   {product.name}
                 </h1>
                 <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2">
@@ -259,16 +254,7 @@ const ProductDetail = () => {
                   </div>
                 </div>
                 
-                {product.material && (
-                  <div className="bg-gradient-secondary/10 rounded-lg p-3 sm:p-4 border border-glass-border hover-scale animate-fade-in">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                      <span className="text-muted-foreground font-medium text-sm sm:text-base">Material Grade</span>
-                      <span className="font-semibold text-foreground bg-success/10 px-2 sm:px-3 py-1 rounded-md self-start sm:self-center hover-scale text-xs sm:text-sm">
-                        {product.material}
-                      </span>
-                    </div>
-                  </div>
-                )}
+             
                 
                 <div className="bg-gradient-secondary/10 rounded-lg p-3 sm:p-4 border border-glass-border hover-scale animate-fade-in">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
