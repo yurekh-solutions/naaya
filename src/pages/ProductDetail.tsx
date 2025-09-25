@@ -169,24 +169,7 @@ const ProductDetail = () => {
          
 
             {/* Additional Information - Dynamic Content */}
-            <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4 flex items-center">
-                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
-                Additional Information
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {getAdditionalInfo(product).map((info, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-start space-x-2 animate-fade-in"
-                    style={{ animationDelay: `${1 + index * 0.1}s` }}
-                  >
-                    <span className="w-2 h-2 bg-success rounded-full mt-1.5 flex-shrink-0"></span>
-                    <span className="text-xs sm:text-sm text-muted-foreground">{info}</span>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
+          
                <GlassCard className="p-4 sm:p-6">
               <h3 className="text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
                 <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
