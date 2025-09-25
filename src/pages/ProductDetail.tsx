@@ -46,11 +46,11 @@ const getAdditionalInfo = (product: any) => {
   const additionalInfo: { [key: string]: string[] } = {
     "Mild Steel": [
       "Manufactured as per IS standards",
-      "Available in various sizes and specifications",
+      "Available in various specifications",
     
     ],
     "Stainless Steel": [
-      "Available in different grades (304, 316, 201)",
+      "Available in different grades ",
       "Excellent formability and weldability",
     
     ],
@@ -62,6 +62,7 @@ const getAdditionalInfo = (product: any) => {
     "Electrical Materials": [
       "ISI marked for quality assurance",
       "Fire retardant properties",
+    
     
     ]
   };
@@ -154,9 +155,72 @@ const ProductDetail = () => {
   />
 </GlassCard>
 
-            
+               <GlassCard variant="premium" className="p-4 sm:p-6">
+              <div className="r sm:text-left">
+                <h1 className="text-xl sm:text-xl lg:text-xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
+                  {product.name}
+                </h1>
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2">
+                  {product.category}
+                </Badge>
+              </div>
+            </GlassCard>
             {/* Product Description */}
+         
+
+            {/* Additional Information - Dynamic Content */}
             <GlassCard className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4 flex items-center">
+                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
+                Additional Information
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {getAdditionalInfo(product).map((info, index) => (
+                  <div 
+                    key={index}
+                    className="flex items-start space-x-2 animate-fade-in"
+                    style={{ animationDelay: `${1 + index * 0.1}s` }}
+                  >
+                    <span className="w-2 h-2 bg-success rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span className="text-xs sm:text-sm text-muted-foreground">{info}</span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+               <GlassCard className="p-4 sm:p-6">
+              <h3 className="text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
+                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
+                Product Specifications
+              </h3>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="bg-gradient-secondary/10 rounded-lg p-3 sm:p-4 border border-glass-border hover-scale">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                    <span className="text-muted-foreground font-medium text-sm sm:text-base">Category</span>
+                    <Badge variant="secondary" className="self-start sm:self-center bg-primary/10 text-primary border-primary/20 hover-scale text-xs sm:text-sm">
+                      {product.category}
+                    </Badge>
+                  </div>
+                </div>
+                
+             
+                
+                <div className="bg-gradient-secondary/10 rounded-lg p-3 sm:p-4 border border-glass-border hover-scale animate-fade-in">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                    <span className="text-muted-foreground font-medium text-sm sm:text-base">Availability</span>
+                    <span className="font-semibold text-success bg-success/10 px-2 sm:px-3 py-1 rounded-md self-start sm:self-center hover-scale animate-pulse text-xs sm:text-sm">
+                      In Stock
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
+          </div>
+
+          {/* Right Column - Product Info and Order Form */}
+          <div className="space-y-4 sm:space-y-6">
+            {/* Product Header */}
+         
+   <GlassCard className="p-4 sm:p-6">
               <h2 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center">
                 <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
                 Product Description
@@ -202,75 +266,13 @@ const ProductDetail = () => {
                 </div>
               </div>
             </GlassCard>
-
-            {/* Additional Information - Dynamic Content */}
-            <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4 flex items-center">
-                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
-                Additional Information
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {getAdditionalInfo(product).map((info, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-start space-x-2 animate-fade-in"
-                    style={{ animationDelay: `${1 + index * 0.1}s` }}
-                  >
-                    <span className="w-2 h-2 bg-success rounded-full mt-1.5 flex-shrink-0"></span>
-                    <span className="text-xs sm:text-sm text-muted-foreground">{info}</span>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
-          </div>
-
-          {/* Right Column - Product Info and Order Form */}
-          <div className="space-y-4 sm:space-y-6">
-            {/* Product Header */}
-            <GlassCard variant="premium" className="p-4 sm:p-6">
-              <div className="text-center sm:text-left">
-                <h1 className="text-xl sm:text-2xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
-                  {product.name}
-                </h1>
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2">
-                  {product.category}
-                </Badge>
-              </div>
-            </GlassCard>
-
             {/* Product Specifications */}
-            <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
-                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
-                Product Specifications
-              </h3>
-              <div className="space-y-3 sm:space-y-4">
-                <div className="bg-gradient-secondary/10 rounded-lg p-3 sm:p-4 border border-glass-border hover-scale">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                    <span className="text-muted-foreground font-medium text-sm sm:text-base">Category</span>
-                    <Badge variant="secondary" className="self-start sm:self-center bg-primary/10 text-primary border-primary/20 hover-scale text-xs sm:text-sm">
-                      {product.category}
-                    </Badge>
-                  </div>
-                </div>
-                
-             
-                
-                <div className="bg-gradient-secondary/10 rounded-lg p-3 sm:p-4 border border-glass-border hover-scale animate-fade-in">
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-                    <span className="text-muted-foreground font-medium text-sm sm:text-base">Availability</span>
-                    <span className="font-semibold text-success bg-success/10 px-2 sm:px-3 py-1 rounded-md self-start sm:self-center hover-scale animate-pulse text-xs sm:text-sm">
-                      In Stock
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </GlassCard>
+         
 
             {/* Order Form */}
             <GlassCard variant="premium" className="p-4 sm:p-6">
               <h3 className="text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
-                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3 animate-pulse"></span>
+                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3 "></span>
                 Request Quote
               </h3>
               
@@ -281,10 +283,10 @@ const ProductDetail = () => {
                     <span className="text-destructive ml-1">*</span>
                   </Label>
                   <Select value={brand} onValueChange={setBrand}>
-                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 transition-all duration-300 hover-scale">
+                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 ">
                       <SelectValue placeholder="Choose a preferred brand" />
                     </SelectTrigger>
-                    <SelectContent className="bg-background border-glass-border animate-scale-in">
+                    <SelectContent className="bg-background border-glass-border ">
                       <SelectItem value="tata" className="hover-scale">TATA Steel</SelectItem>
                       <SelectItem value="sail" className="hover-scale">SAIL</SelectItem>
                       <SelectItem value="jsw" className="hover-scale">JSW Steel</SelectItem>
@@ -301,10 +303,10 @@ const ProductDetail = () => {
                     <span className="text-destructive ml-1">*</span>
                   </Label>
                   <Select value={material} onValueChange={setMaterial}>
-                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 transition-all duration-300 hover-scale">
+                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 ">
                       <SelectValue placeholder="Choose material specification" />
                     </SelectTrigger>
-                    <SelectContent className="bg-background border-glass-border animate-scale-in">
+                    <SelectContent className="bg-background border-glass-border ">
                       <SelectItem value="is2062-a" className="hover-scale">IS2062 Grade A</SelectItem>
                       <SelectItem value="is2062-b" className="hover-scale">IS2062 Grade B</SelectItem>
                       <SelectItem value="is2062-c" className="hover-scale">IS2062 Grade C</SelectItem>
@@ -316,7 +318,7 @@ const ProductDetail = () => {
                   </Select>
                 </div>
                 
-                <div className="animate-fade-in">
+                <div className="">
                   <Label htmlFor="quantity" className="text-foreground font-medium mb-2 block text-sm sm:text-base">
                     Quantity (Metric Tons)
                   </Label>
@@ -327,7 +329,7 @@ const ProductDetail = () => {
                     max="10000"
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
-                    className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 transition-all duration-300 hover-scale"
+                    className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 "
                     placeholder="Enter required quantity"
                   />
                   <p className="text-xs text-muted-foreground mt-1">Minimum order quantity: 1 MT</p>
@@ -336,7 +338,7 @@ const ProductDetail = () => {
               
               <Button
                 onClick={handleAddToRFQ}
-                className="w-full mt-4 sm:mt-6 bg-gradient-primary hover:shadow-glow text-sm sm:text-base font-semibold h-10 sm:h-12 lg:h-14 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover-scale animate-fade-in"
+                className="w-full mt-4 sm:mt-6 bg-gradient-primary hover:shadow-glow text-sm sm:text-base font-semibold h-10 sm:h-12 lg:h-14 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed "
                 disabled={isAddDisabled}
               >
                 <Plus className="h-4 w-4 mr-2" />
