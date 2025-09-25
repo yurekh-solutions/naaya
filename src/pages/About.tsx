@@ -17,6 +17,10 @@ import materialWarehouse from "../assets/materials-warehouse.jpg";
 import officeBuilding from "../assets/office-building.jpg";
 import constructionSite from "../assets/construction-site.jpg";
 import aiDashboard from "../assets/ai-dashboard.jpg";
+import yuvi from '../assets/yuvi.png';
+
+
+
 const About = () => {
       const [step, setStep] = useState(1);
   
@@ -108,7 +112,7 @@ const About = () => {
       suffix: "+"
     },
     {
-      value: 37,
+      value: 2,
       label: "Million ARR",
       description: "Annual recurring revenue",
       icon: DollarSign,
@@ -116,7 +120,7 @@ const About = () => {
       suffix: "M"
     },
     {
-      value: 400,
+      value: 200,
       label: "CAGR Growth",
       description: "Compound annual growth rate",
       icon: TrendingUp,
@@ -130,7 +134,7 @@ const About = () => {
       date: "July 2023",
       title: "Company Incorporated",
       subtitle: "NaayaConstruction Founded",
-      description: "Founded with a vision to revolutionize construction material Naayaconstruction using cutting-edge AI technology and transparent marketplace principles."
+      description: "Founded with a vision to revolutionize Procurement using cutting-edge AI technology and transparent marketplace principles."
     },
     {
       date: "September 2023",
@@ -180,7 +184,7 @@ const About = () => {
     {
       title: "Industry Recognition",
       items: [
-        "Best Naayaconstruction Platform 2024",
+        "Best Procurement Platform 2024",
         "AI Innovation Award",
         "Customer Excellence Award"
       ]
@@ -196,8 +200,8 @@ const About = () => {
     {
       title: "Partnerships",
       items: [
-        "Strategic Alliance with JSW Steel",
-        "Technology Partnership with Microsoft",
+        "Strategic Alliance with Lalani Group",
+        "Technology Partnership with NaayaAI",
         "Banking Partnership with HDFC"
       ]
     }
@@ -268,8 +272,8 @@ const About = () => {
   return (
     <>
       <SEOHead
-        title="About NaayaConstruction - AI-Powered Construction Material Naayaconstruction Platform"
-        description="Learn about NaayaConstruction's mission to revolutionize construction material Naayaconstruction with AI technology. Trusted by 1000+ businesses across 20+ states in India."
+        title="About NaayaConstruction - AI-Powered Procurement Platform"
+        description="Learn about NaayaConstruction's mission to revolutionize Procurement with AI technology. Trusted by 1000+ businesses across 20+ states in India."
         keywords="about naayaconstruction, construction materials, AI Naayaconstruction, B2B marketplace, construction technology, material suppliers, building materials platform"
         structuredData={structuredData}
       />
@@ -280,14 +284,14 @@ const About = () => {
           {/* Animated Background */}
           <motion.div
             className="absolute inset-0 z-0 bg-cover bg-center bg-fixed"
-            style={{ backgroundImage: `url(${material})` }}
-            initial={{ scale: 1.2, opacity: 0 }}
+            style={{ backgroundImage: `url(${officeBuilding})` }}
+            initial={{ scale: 1.2, opacity: 0}}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
           />
 
           {/* Dynamic Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/80 to-black/60 backdrop-blur-[2px]" />
 
           {/* Floating Elements */}
           <motion.div
@@ -317,31 +321,36 @@ const About = () => {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <Badge 
-                className="mb-6 bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-lg px-6 py-2"
+                className="mb-6 bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-md px-6 py-2"
                 variant="outline"
               >
-                Revolutionizing Construction Naayaconstruction
+                Revolutionizing Procurement 
               </Badge>
             </motion.div>
 
             <motion.h1
-              className="text-3xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+            
+             className="text-3xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent leading-tight"
+
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
             >
-              About NaayaConstruction
+            <span className="bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent">
+            About NaayaConstruction
+            </span>
+              
             </motion.h1>
 
             <motion.p
-              className="text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed"
+              className="text-xl lg:text-xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
             >
-              We're revolutionizing the construction material Naayaconstruction industry with AI-powered
+              We're revolutionizing the construction industry with AI-powered
               solutions, making it easier for businesses to source quality materials efficiently,
-              transparently, and cost-effectively across India.
+              transparently, and cost-effectively across world.
             </motion.p>
 
             <motion.div
@@ -352,7 +361,8 @@ const About = () => {
             >
               <Button
                 size="lg"
-                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4"
+                className="  bg-gradient-to-r from-orange-500 to-red-500 
+ hover:shadow-glow transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4"
               >
                 <Link to="/contact" className="flex items-center space-x-2">
                   <Users2 className="h-5 w-5" />
@@ -375,13 +385,13 @@ const About = () => {
  <section ref={heroRef} className="relative py-24 lg:py-32 overflow-hidden">
           {/* Animated Background Blobs */}
           <motion.div
-            className="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-blob"
+            className=" "
             initial={{ opacity: 0, scale: 0 }}
             animate={isHeroInView ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0 }}
             transition={{ duration: 2 }}
           />
           <motion.div
-            className="absolute -bottom-40 -right-40 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-blob"
+            className=""
             initial={{ opacity: 0, scale: 0 }}
             animate={isHeroInView ? { opacity: 0.4, scale: 1 } : { opacity: 0, scale: 0 }}
             transition={{ duration: 2, delay: 0.5 }}
@@ -396,15 +406,15 @@ const About = () => {
                 animate={isHeroInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -15 }}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
-                <div className="relative transform-3d">
-                  <GlassCard variant="premium" className="p-2 animate-float-3d">
+                <div className="relative transform-3d ">
+                  <div className="p-2 animate-float-3d premium ">
                     <ImageCarousel 
                       images={carouselImages}
                       className="h-96 lg:h-[500px]"
                       autoPlay={true}
                       interval={5000}
                     />
-                  </GlassCard>
+                  </div>
                   
                   {/* Floating Device Mockups */}
                   <motion.div
@@ -434,8 +444,8 @@ const About = () => {
               >
                 
 
-                <motion.h1
-                  className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+                 <motion.h1
+                  className="text-3xl lg:text-4xl  font-bold bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
                   initial={{ y: 40, opacity: 0 }}
                   animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -444,15 +454,13 @@ const About = () => {
                 </motion.h1>
 
                 <motion.p
-                  className="text-xl text-muted-foreground leading-relaxed"
+                  className="text-lg text-muted-foreground leading-relaxed"
                   initial={{ y: 30, opacity: 0 }}
                   animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
                   transition={{ delay: 0.7, duration: 1 }}
                 >
-                  NaayaConstruction is India's premier platform for buying and selling industrial products and 
-                  services, backed by the legacy of L&T — a leader in manufacturing, building, and construction. 
-                  We are revolutionizing the B2B marketplace by empowering businesses, especially MSMEs, to source 
-                  their industrial needs seamlessly, digitally, and cost-effectively.
+               Naaya Construction is India’s next-generation AI-powered procurement platform for the construction industry, backed by the strength of Naaya Group. We are revolutionizing the way contractors, builders, and enterprises source their construction needs by making procurement seamless, digital-first, and cost-effective.
+
                 </motion.p>
 
                 <motion.p
@@ -461,32 +469,35 @@ const About = () => {
                   animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
                   transition={{ delay: 0.9, duration: 1 }}
                 >
-                  Our team of over 500 dedicated members is committed to transforming the way businesses operate. 
-                  As an integrated solution, NaayaConstruction goes beyond merely connecting buyers and sellers. 
-                  Our platform offers an extensive range of products across 50+ categories, along with end-to-end 
-                  support for financing and logistics through carefully vetted partners.
+                 Our team is committed to transforming the Procurement ecosystem with a focus on innovation, technology, and sustainability. More than just a procurement platform, Naaya Construction delivers an integrated ecosystem — connecting buyers and suppliers, offering real-time sourcing intelligence, and ensuring end-to-end support across projects.
+With an extensive range of construction materials, machinery, and services sourced from verified partners, we simplify complex supply chains and accelerate project execution.
                 </motion.p>
 
+               
                 <motion.div
                   className="flex flex-col sm:flex-row gap-4"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                   transition={{ delay: 1.1, duration: 0.8 }}
                 >
-                  <Button
-                    size="lg"
-                    className="btn-3d text-lg px-8 py-4 group"
-                    onClick={() => {
-                      // Create a downloadable brochure
-                      const link = document.createElement('a');
-                      link.href = '#';
-                      link.download = 'NaayaConstruction-Brochure.pdf';
-                      link.click();
-                    }}
-                  >
-                    <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
-                    Download Brochure
-                  </Button>
+                 <Button
+  size="lg"
+  className="text-lg px-8 py-4 font-semibold  
+             bg-gradient-to-r from-orange-500 to-red-500 
+             text-white shadow-lg hover:scale-105 
+             hover:shadow-[0_0_20px_rgba(255,80,0,0.6)] 
+             transition-all duration-300 group"
+  onClick={() => {
+    const link = document.createElement("a");
+    link.href = "#";
+    link.download = "NaayaConstruction-Brochure.pdf";
+    link.click();
+  }}
+>
+  <Download className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+  Download Brochure
+</Button>
+
                   
                   <Button
                     variant="outline"
@@ -503,6 +514,7 @@ const About = () => {
             </div>
           </div>
         </section>
+       
         {/* Dynamic Stats Section */}
         <section className="py-20 bg-gradient-subtle" ref={statsRef}>
           <div className="container mx-auto px-4">
@@ -519,7 +531,7 @@ const About = () => {
               </h2>
               <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-4" />
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                See how we're transforming the construction material Naayaconstruction landscape across India
+                See how we're transforming the procurement material landscape across Worl
               </p>
             </motion.div>
 
@@ -558,9 +570,121 @@ const About = () => {
             </motion.div>
           </div>
         </section>
+ <section ref={heroRef} className="relative py-10 lg:py-20  overflow-hidden">
+          {/* Animated Background Blobs */}
+          <motion.div
+            className=" "
+            initial={{ opacity: 0, scale: 0 }}
+            animate={isHeroInView ? { opacity: 0.6, scale: 1 } : { opacity: 0, scale: 0 }}
+            transition={{ duration: 2 }}
+          />
+          <motion.div
+            className=""
+            initial={{ opacity: 0, scale: 0 }}
+            animate={isHeroInView ? { opacity: 0.4, scale: 1 } : { opacity: 0, scale: 0 }}
+            transition={{ duration: 2, delay: 0.5 }}
+          />
 
+          <div className="relative container mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left Side - Image Carousel */}
+
+              {/* Right Side - Content with Download */}
+              <motion.div
+                className="space-y-8"
+                initial={{ opacity: 0, x: 100 }}
+                animate={isHeroInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+                transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              >
+                
+
+                 <motion.h1
+                  className="text-3xl lg:text-4xl  font-bold bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                >
+                  NaayaConstruction, a proud division of Naayatrade
+                </motion.h1>
+
+                <motion.p
+                  className="text-lg text-muted-foreground leading-relaxed"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+                  transition={{ delay: 0.7, duration: 1 }}
+                >
+               NaayaConstruction proudly operates as part of Naayatrade, the world’s emerging powerhouse in global wholesale and digital trade. This association reflects our steadfast commitment to delivering the same excellence, innovation, and forward-thinking approach that define Naayatrade.
+
+                </motion.p>
+
+                <motion.p
+                  className="text-lg text-muted-foreground leading-relaxed"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+                  transition={{ delay: 0.9, duration: 1 }}
+                >
+                 By drawing on Naayatrade’s expertise in building scalable marketplaces, supply chain networks, and cutting-edge digital ecosystems, NaayaConstruction provides unmatched value to contractors, builders, and enterprises. At NaayaConstruction, we are dedicated to empowering businesses with the strength and reliability of Naayatrade’s vision, enabling them to grow and succeed in today’s fast-evolving construction and infrastructure landscape.
+
+                </motion.p>
+
+               
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ delay: 1.1, duration: 0.8 }}
+                >
+<Button
+  size="lg"
+  className="text-lg px-8 py-4 font-semibold  
+             bg-gradient-to-r from-orange-500 to-red-500 
+             text-white shadow-lg hover:scale-105 
+             hover:shadow-[0_0_20px_rgba(255,80,0,0.6)] 
+             transition-all duration-300 group"
+  onClick={() => window.open('https://naayatrade.com/', '_blank')}
+>
+  More Details
+</Button>
+
+
+                  
+                  
+                </motion.div>
+              </motion.div>
+              
+<motion.div
+  className="relative"
+  initial={{ opacity: 0, x: -100, rotateY: -15 }}
+  animate={isHeroInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -15 }}
+  transition={{ duration: 1, ease: "easeOut" }}
+>
+  <div className="relative transform-3d">
+    <div className="p-2 animate-float-3d premium relative">
+      <img src={yuvi} alt="Naaya" className="w-full h-[400px]  object-contain rounded-lg" />
+
+      {/* Overlay text at bottom */}
+      <motion.h1
+        className="absolute bottom-0 left-1/4 transform -translate-x-1/2  sm:mr-20 text-center text-3xl lg:text-5xl font-bold 
+                   bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+        initial={{ y: 20, opacity: 0 }}
+        animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <span>  NAAYATRADE</span>
+       
+      </motion.h1>
+    </div>
+  </div>
+</motion.div>
+
+
+
+
+            </div>
+          </div>
+        </section>
         {/* Mission & Vision Enhanced */}
-        <section className="py-20">
+        <section className="py-20 bg-gradient-subtle">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Mission Content */}
@@ -575,7 +699,7 @@ const About = () => {
                     Our Mission
                   </Badge>
                   <h2 className="text-4xl font-bold mb-6">
-                    Transforming Construction Naayaconstruction
+                    Transforming Procurement
                   </h2>
                 </div>
                 
@@ -588,7 +712,7 @@ const About = () => {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <p className="text-muted-foreground leading-relaxed text-lg">
-                      NaayaConstruction aims to revolutionize B2B raw materials Naayaconstruction by modernizing 
+                      NaayaConstruction aims to revolutionize B2B raw materials Procurement by modernizing 
                       traditional processes with cutting-edge AI technology, creating a transparent and 
                       reliable marketplace that reduces costs and simplifies sourcing for businesses across India.
                     </p>
@@ -650,7 +774,7 @@ const About = () => {
                       <div className="space-y-4">
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">Become the #1 Naayaconstruction platform in India</span>
+                          <span className="text-sm text-muted-foreground">Become the #1 AI-Powered Procurement platform in India</span>
                         </div>
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
@@ -687,7 +811,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Enhanced Journey Section with Dynamic Timeline */}
         {/* <section className="py-20 bg-gradient-secondary">
           <div className="container mx-auto px-4">
             <motion.div
@@ -705,7 +828,7 @@ const About = () => {
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-6" />
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Discover how we've grown from a simple idea to India's leading construction material Naayaconstruction platform
+                Discover how we've grown from a simple idea to India's leading Procurement platform
               </p>
             </motion.div>
 
@@ -713,11 +836,11 @@ const About = () => {
           </div>
         </section> */}
 
-        {/* Core Values Enhanced */}
+        {/* Core Values Enhanced
        
 
         {/* Achievements Section */}
-        <section className="py-20 bg-gradient-secondary" ref={achievementsRef}>
+        <section className="py-20 " ref={achievementsRef}>
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
@@ -725,9 +848,9 @@ const About = () => {
               animate={isAchievementsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 0.8 }}
             >
-              <Badge className="mb-4 bg-accent/10 text-accent border-accent/30">
-                Achievements
-              </Badge>
+                <Badge className="mb-4 bg-accent/10 text-accent border-accent/30">
+                  Achievements
+                </Badge>
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                 Recognition & Milestones
               </h2>
@@ -760,7 +883,7 @@ const About = () => {
             </div>
           </div>
         </section>
- <section className="py-20" ref={valuesRef}>
+ <section className="py-20 bg-gradient-subtle" ref={valuesRef}>
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
@@ -808,7 +931,7 @@ const About = () => {
           </div>
         </section>
         {/* Testimonials Carousel */}
-        <section className="py-20   bg-gradient-subtle">
+        {/* <section className="py-20   bg-gradient-subtle">
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
@@ -853,10 +976,10 @@ const About = () => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Enhanced CTA Section */}
-        <section className="py-20 bg-gradient-primary relative overflow-hidden">
+        <section className="py-20 bg-gradient relative overflow-hidden">
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -872,11 +995,11 @@ const About = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-primary-foreground mb-8">
-                Ready to Transform Your Naayaconstruction?
+                Ready to Transform?
               </h2>
               <p className="text-xl text-primary-foreground/90 mb-12 max-w-3xl mx-auto leading-relaxed">
                 Join thousands of businesses who trust NaayaConstruction for their 
-                material Naayaconstruction needs. Experience the future of construction sourcing with our AI-powered platform.
+                procurement needs. Experience the future of sourcing with our AI-powered platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button 

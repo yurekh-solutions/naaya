@@ -47,7 +47,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone Support",
-      value: "+91 70390 47070",
+      value: "+91 86574 94046",
       description: "Direct line to our support team",
       available: "24/7 Available",
       action: "tel:+918425047309"

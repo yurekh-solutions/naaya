@@ -30,29 +30,30 @@ const Footer = () => {
 
   {/* WhatsApp */}
   <a
-    href="https://wa.me/917039047070"
+    href="https://wa.me/+918657494046"
     target="_blank"
     rel="noopener noreferrer"
     className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-pulse-glow"
     aria-label="Contact us on WhatsApp"
   >
-    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-600" />
   </a>
 
   {/* Phone */}
   <a
-    href="tel:+917039047070"
-    className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300"
-    aria-label="Call us directly"
-  >
-    <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-  </a>
+  href="tel:+918657494046"
+  className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300"
+  aria-label="Call us directly"
+>
+  <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+</a>
 
   {/* Back to Top */}
   {showScrollTop && (
     <button
       onClick={scrollToTop}
-      className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-gradient-primary shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-bounce-in"
+      className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full              bg-gradient-to-r from-orange-500 to-red-500 
+ shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-bounce-in"
       aria-label="Scroll to top"
     >
       <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
@@ -82,7 +83,7 @@ const Footer = () => {
 
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <span>+91 70390 47070</span>
+                <span>+91 86574 94046</span>
               </div>
 
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
@@ -111,7 +112,7 @@ const Footer = () => {
                 <li><Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
                                 <li><Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms & Conditions</Link></li>
 
-                <li><Link to="/blogs" className="text-muted-foreground hover:text-primary transition-colors">Blogs & Insights</Link></li>
+                <li><a href="http://naayaconstruction.blog/" className="text-muted-foreground hover:text-primary transition-colors">Blogs & Insights</a></li>
               </ul>
             </div>
 
@@ -132,7 +133,7 @@ const Footer = () => {
               <ul className="space-y-3 text-sm">
                 <li><a href="mailto:construction@naayatrade.com" className="text-muted-foreground hover:text-primary transition-colors">Email Us</a></li>
                 <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Page</Link></li>
-                <li><a href="https://wa.me/917039047070" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">WhatsApp Support</a></li>
+                <li><a href="https://wa.me/918657494046" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">WhatsApp Support</a></li>
                 <li><Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
               </ul>
             </div>

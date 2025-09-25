@@ -13,10 +13,13 @@ const Home = () => {
   const statsRef = useRef(null);
   const featuresRef = useRef(null);
   const dashboardRef = useRef(null);
+    const servicesRef = useRef(null);
+
   
   const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
   const isFeaturesInView = useInView(featuresRef, { once: true, margin: "-100px" });
   const isDashboardInView = useInView(dashboardRef, { once: true, margin: "-100px" });
+  const isServicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
 
   const stats = [
     { label: "Total Orders", value: 1234, change: "+2.4%", icon: Package, positive: true },
@@ -75,6 +78,36 @@ const Home = () => {
       icon: Award,
       title: "Best Prices",
       description: "Competitive pricing with transparent cost breakdowns"
+    }
+  ];
+  const productCategories = [
+    {
+      title: "TMT & Steel",
+      description: "High-grade TMT bars, structural steel, and reinforcement materials",
+      icon: "🏗️",
+      items: ["TMT Bars", "Structural Steel", "Mild Steel", "Steel Pipes"],
+      gradient: "from-primary/20 to-accent/20"
+    },
+    {
+      title: "Stainless Steel",
+      description: "Premium stainless steel in various grades and forms",
+      icon: "⚡",
+      items: ["SS 304 Sheets", "SS 316 Pipes", "SS Bars", "SS Coils"],
+      gradient: "from-accent/20 to-primary-glow/20"
+    },
+    {
+      title: "Construction Materials",
+      description: "Complete range of construction essentials",
+      icon: "🏢",
+      items: ["Cement", "Aggregates", "Bricks", "Tiles"],
+      gradient: "from-primary-glow/20 to-primary/20"
+    },
+    {
+      title: "Electrical Materials",
+      description: "Quality electrical components and systems",
+      icon: "🔌",
+      items: ["Cables", "Switches", "MCBs", "Panels"],
+      gradient: "from-primary/20 to-accent/20"
     }
   ];
 
@@ -480,42 +513,57 @@ const Home = () => {
         </section>
 
         {/* Demo Video Section */}
-        <section className="py-20 bg-gradient-secondary">
+       <section className="py-20 bg-gradient-secondary" ref={servicesRef}>
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-foreground mb-6">See It In Action</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-                Watch how NaayaConstruction transforms traditional Naayaconstruction processes
-              </p>
-            </div>
-
             <motion.div
-              className="relative max-w-4xl mx-auto"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isServicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
-              <GlassCard variant="premium" className="relative overflow-hidden">
-                <div 
-                  className="aspect-video bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${warehouseImage})` }}
-                >
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <motion.button
-                      className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all duration-300"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Play className="h-8 w-8 text-white ml-1" />
-                    </motion.button>
-                  </div>
-                </div>
-              </GlassCard>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Our Product Categories
+                </span>
+              </h2>
+              <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-6" />
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Comprehensive range of construction materials from verified suppliers across India
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isServicesInView ? "visible" : "hidden"}
+            >
+              {productCategories.map((category, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <GlassCard 
+                    variant="premium" 
+                    className={`p-6 h-full group bg-gradient-to-br ${category.gradient} hover:shadow-elevation transition-all duration-500`}
+                  >
+                    <div className="text-center">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        {category.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-foreground mb-3">{category.title}</h3>
+                      <p className="text-muted-foreground mb-4 text-sm">{category.description}</p>
+                      <div className="space-y-1">
+                        {category.items.map((item, itemIndex) => (
+                          <div key={itemIndex} className="text-xs text-primary font-medium">
+                            • {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </section>
-
         {/* Enhanced CTA Section */}
         <section className="py-20 bg-gradient-primary relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 to-accent/95" />

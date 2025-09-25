@@ -218,7 +218,7 @@ useEffect(() => {
 
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="font-semibold text-foreground text-sm line-clamp-2 mb-2">
+                  <h3 className="font-semibold text-foreground  truncate text-sm line-clamp-2 mb-2">
                     {product.name}
                   </h3>
                   <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
