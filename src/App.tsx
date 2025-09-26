@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import FAQ from "./components/FAQ";
+
 // import Terms from "./pages/TermsCondition";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,7 @@ const App = () => (
                     <Route path="/terms" element={<Terms />} />
 
           {/* <Route path="/termsCondition" element={<TermsCondition />} /> */}
+        <Route path="/faq" element={<FAQ />} />
 
               <Route path="/cart" element={<Cart />} />
               <Route path="/about" element={<About />} />

@@ -1,63 +1,55 @@
-import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface AnimatedCounterProps {
+  start?: number;
   end: number;
   duration?: number;
   decimals?: number;
-  prefix?: string;
   suffix?: string;
+  prefix?: string;
   className?: string;
 }
 
 const AnimatedCounter = ({ 
+  start = 0, 
   end, 
   duration = 2, 
   decimals = 0, 
-  prefix = "", 
-  suffix = "",
+  suffix = "", 
+  prefix = "",
   className = ""
 }: AnimatedCounterProps) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [count, setCount] = useState(start);
 
   useEffect(() => {
-    if (!isInView) return;
-
-    let startTime: number;
-    let animationFrame: number;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = (timestamp - startTime) / (duration * 1000);
-
-      if (progress < 1) {
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        setCount(end * easeOut);
-        animationFrame = requestAnimationFrame(animate);
-      } else {
+    const increment = (end - start) / (duration * 60);
+    let current = start;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= end) {
         setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(current);
       }
-    };
+    }, 1000 / 60);
 
-    animationFrame = requestAnimationFrame(animate);
+    return () => clearInterval(timer);
+  }, [start, end, duration]);
 
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
-  }, [end, duration, isInView]);
-
-  const formatNumber = (num: number) => {
-    return num.toFixed(decimals);
-  };
+  const displayValue = decimals > 0 ? count.toFixed(decimals) : Math.floor(count);
 
   return (
-    <span ref={ref} className={className}>
-      {prefix}{formatNumber(count)}{suffix}
-    </span>
+    <motion.span
+      className={`counter-number ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {prefix}{displayValue}{suffix}
+    </motion.span>
   );
 };
 

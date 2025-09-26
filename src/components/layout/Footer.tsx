@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 
 import { Mail, Phone, MapPin, MessageCircle , ChevronUp } from "lucide-react";
 import logo from "../../assets/logo.png";
+import FAQ from "@/components/FAQ";
+import logo1 from "../../assets/Naayatradelogo.png"
 
 const Footer = () => {
     const [showScrollTop, setShowScrollTop] = useState(false);
@@ -74,7 +76,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center shadow-glow">
-                  <img src={logo} alt="NaayaConstruction Logo" className="w-9 h-9 object-contain" />
+                  <img src={logo1} alt="NaayaConstruction Logo" className="w-9 h-9 object-contain" />
                 </div>
                 <span className="text-lg font-bold text-foreground">
                   NaayaConstruction
@@ -134,7 +136,7 @@ const Footer = () => {
                 <li><a href="mailto:construction@naayatrade.com" className="text-muted-foreground hover:text-primary transition-colors">Email Us</a></li>
                 <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Page</Link></li>
                 <li><a href="https://wa.me/918657494046" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">WhatsApp Support</a></li>
-                <li><Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
+                <li><Link to="/FAQ" className="text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
               </ul>
             </div>
           </div>

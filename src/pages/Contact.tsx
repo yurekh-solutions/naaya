@@ -129,26 +129,26 @@ const Contact = () => {
     return true;
   };
 
-  const formatWhatsAppMessage = (type: string) => {
-    let message = `*${type} Enquiry from NaayaConstruction Website*\n\n`;
-    message += `👤 *Name:* ${formData.firstName} ${formData.lastName}\n`;
-    message += `📧 *Email:* ${formData.email}\n`;
-    message += `📱 *Phone:* ${formData.phone}\n`;
-    message += `🏢 *Company:* ${formData.company}\n`;
+  // const formatWhatsAppMessage = (type: string) => {
+  //   let message = `*${type} Enquiry from NaayaConstruction Website*\n\n`;
+  //   message += `👤 *Name:* ${formData.firstName} ${formData.lastName}\n`;
+  //   message += `📧 *Email:* ${formData.email}\n`;
+  //   message += `📱 *Phone:* ${formData.phone}\n`;
+  //   message += `🏢 *Company:* ${formData.company}\n`;
     
-    if (formData.productCategories) {
-      const fieldName = type === "Supplier" ? "Product Categories" : 
-                       type === "Partnership" ? "Partnership Type" : "Additional Info";
-      const emoji = type === "Supplier" ? "📦" : type === "Partnership" ? "🤝" : "ℹ️";
-      message += `${emoji} *${fieldName}:* ${formData.productCategories}\n`;
-    }
+  //   if (formData.productCategories) {
+  //     const fieldName = type === "Supplier" ? "Product Categories" : 
+  //                      type === "Partnership" ? "Partnership Type" : "Additional Info";
+  //     const emoji = type === "Supplier" ? "📦" : type === "Partnership" ? "🤝" : "ℹ️";
+  //     message += `${emoji} *${fieldName}:* ${formData.productCategories}\n`;
+  //   }
     
-    message += `💬 *Message:*\n${formData.message}\n\n`;
-    message += `*Sent via NaayaConstruction Contact Form*\n`;
-    message += `*Timestamp:* ${new Date().toLocaleString()}`;
+  //   message += `💬 *Message:*\n${formData.message}\n\n`;
+  //   message += `*Sent via NaayaConstruction Contact Form*\n`;
+  //   message += `*Timestamp:* ${new Date().toLocaleString()}`;
     
-    return message;
-  };
+  //   return message;
+  // };
 
   const formatEmailMessage = (type: string) => {
     let message = `New ${type} Enquiry - NaayaConstruction Contact Form\n\n`;
@@ -179,12 +179,9 @@ const Contact = () => {
 
     try {
       // Format WhatsApp message with proper encoding
-      const whatsappMessage = formatWhatsAppMessage(type);
-      const encodedWhatsAppMessage = encodeURIComponent(whatsappMessage);
+    
       
       // Create WhatsApp URL
-      const phoneNumber = "919930670707";
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedWhatsAppMessage}`;
       
       // Format email message
       const emailMessage = formatEmailMessage(type);
@@ -196,7 +193,6 @@ const Contact = () => {
       const emailUrl = `mailto:construction@naayatrade.com?subject=${encodedEmailSubject}&body=${encodedEmailBody}`;
       
       // Open WhatsApp first (primary method)
-      window.open(whatsappUrl, '_blank');
       
       // Open email client after a short delay (secondary method)
       setTimeout(() => {
@@ -408,7 +404,7 @@ const Contact = () => {
       >
         <Button 
           onClick={() => handleSubmit(type)}
-          className=" items-center bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-[1.02] border-0 text-lg py-6"
+          className=" items-center bg-gradient-to-r from-orange-500 to-red-500 hover:shadow-glow transition-all duration-300 transform hover:scale-[1.02] border-0 text-lg py-6"
         >
           <Send className="h-5 w-5 mr-2" />
           Send Message

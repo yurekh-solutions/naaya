@@ -1,0 +1,198 @@
+import { motion } from "framer-motion";
+import { GlassCard } from "@/components/ui/glass-card";
+import {
+  Search,
+  UserCheck,
+  Truck,
+  HandCoins,
+  Zap,
+  Shield,
+  CheckCircle,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
+const HowItWorks = () => {
+  const steps = [
+    {
+      icon: Search,
+      title: "Submit RFQ",
+      description:
+        "Post your material requirements through our AI-powered form or voice interface",
+      details: [
+        "Specify quantities & specifications",
+        "Set delivery timeline",
+        "Add quality requirements",
+      ],
+      color: "from-primary/20 to-accent/20",
+    },
+    {
+      icon: Zap,
+      title: "AI Matching",
+      description:
+        "Our intelligent system matches you with verified suppliers in under 60 seconds",
+      details: [
+        "Real-time price comparison",
+        "Quality score analysis",
+        "Delivery capability check",
+      ],
+      color: "from-accent/20 to-primary-glow/20",
+    },
+    {
+      icon: UserCheck,
+      title: "Supplier Selection",
+      description:
+        "Review detailed proposals and select the best supplier for your needs",
+      details: [
+        "Verified supplier profiles",
+        "Past performance data",
+        "Transparent pricing",
+      ],
+      color: "from-primary-glow/20 to-primary/20",
+    },
+    {
+      icon: Shield,
+      title: "Secure Payment",
+      description:
+        "Protected transactions through our integrated escrow system",
+      details: ["Payment held securely", "Release on delivery", "Dispute resolution"],
+      color: "from-primary/20 to-accent/20",
+    },
+    {
+      icon: Truck,
+      title: "Real-time Tracking",
+      description:
+        "Monitor your order from dispatch to delivery with live updates",
+      details: [
+        "GPS location tracking",
+        "Milestone notifications",
+        "Estimated delivery time",
+      ],
+      color: "from-accent/20 to-primary-glow/20",
+    },
+    {
+      icon: HandCoins,
+      title: "Delivery & Payment",
+      description:
+        "Confirm delivery quality and automatic payment release to supplier",
+      details: [
+        "Quality inspection",
+        "Digital documentation",
+        "Instant payment release",
+      ],
+      color: "from-primary-glow/20 to-primary/20",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6 },
+    },
+  };
+
+  return (
+    <section className="py-20 bg-gradient-subtle relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              How It Works
+            </span>
+          </h2>
+          <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-6" />
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            From requirement to delivery – experience seamless procurement in 6
+            simple steps
+          </p>
+        </motion.div>
+
+        {/* Process Cards - Desktop */}
+      
+
+        {/* Timeline Layout - Mobile */}
+        <div className="lg:hidden ">
+          <div className="relative pl-4">
+            <div className="absolute left-12 top-0 bottom-0 w-0.5 z-10  bg-gradient-to-b from-primary via-accent to-primary-glow" />
+
+            {steps.map((step, index) => (
+              <motion.div
+                key={`mobile-${index}`}
+                className="relative flex items-start space-x-6 mb-12 last:mb-0"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                {/* Dot/Icon */}
+                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-primary-foreground font-bold z-10 animate-pulse-glow">
+                  <step.icon className="h-6 w-6" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 pt-2 pr-2">
+                  <h4 className="text-lg font-semibold text-foreground mb-2">
+                    {step.title}
+                  </h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <GlassCard variant="premium" className="inline-block p-8 w-full sm:w-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Ready to Streamline Your Procurement?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              Join thousands of builders and suppliers transforming construction procurement.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center sm:items-stretch">
+                                                  <Link to="/products" className="flex items-center space-x-2">
+              
+              <button className="bg-gradient-primary hover:shadow-glow text-primary-foreground px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                Start Your First RFQ
+              </button>
+            </Link>
+            </div>
+          </GlassCard>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default HowItWorks;

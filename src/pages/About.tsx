@@ -394,15 +394,19 @@ const About = () => {
                     <Download className="h-5 w-5 mr-2" />
                     Download Brochure
                   </Button>
-                  
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="glass-morphism border-primary/30 text-primary hover:bg-primary/10 text-lg px-6 py-3"
-                  >
-                    <Users2 className="h-5 w-5 mr-2" />
-                    Contact Us
-                  </Button>
+  
+                 <Button
+  asChild
+  variant="outline"
+  size="lg"
+  className="glass-morphism border-primary/30 text-primary hover:bg-primary/10 text-lg px-6 py-3"
+>
+  <a href="/contact">
+    <Users2 className="h-5 w-5 mr-2" />
+    Contact Us
+  </a>
+</Button>
+
                 </motion.div>
               </motion.div>
             </div>
@@ -552,7 +556,7 @@ const About = () => {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mb-4" />
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                See how we're transforming the construction material landscape
+                See how we're transforming the procurement landscape
               </p>
             </motion.div>
 
@@ -621,9 +625,7 @@ const About = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground leading-relaxed">
-                      NaayaConstruction aims to revolutionize B2B raw materials procurement by modernizing 
-                      traditional processes with cutting-edge AI technology, creating a transparent and 
-                      reliable marketplace that reduces costs and simplifies sourcing for businesses across India.
+                      NaayaConstruction is on a mission to transform raw material procurement for the construction industry by leveraging advanced AI and digital innovation. We aim to create a transparent, reliable, and cost-efficient marketplace that bridges global vendors with Indian builders, streamlines sourcing, and empowers businesses to build faster, smarter, and stronger.
                     </p>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="space-y-2">
@@ -676,11 +678,9 @@ const About = () => {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        NaayaConstruction envisions a fully digital, efficient, and transparent raw materials 
-                        procurement ecosystem powered by advanced technology, becoming India's go-to platform 
-                        for solving sourcing challenges and fostering sustainable growth.
+                       NaayaConstruction strives to become the world’s leading digital marketplace for construction trade, enabling billions in transactions, fostering sustainable global partnerships, and driving a fully digital, efficient, and eco-conscious procurement ecosystem for the future of infrastructure.
                       </p>
-                      <div className="space-y-3">
+                      <div className="space-y-4">
                         <div className="flex items-start space-x-3">
                           <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                           <span className="text-sm text-muted-foreground">Become the #1 AI-Powered Procurement platform in India</span>
@@ -848,16 +848,24 @@ const About = () => {
                     <span>Start Sourcing Now</span>
                   </Link>
                 </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3 backdrop-blur-sm"
-                >
-                  <Link to="/contact" className="flex items-center space-x-2">
-                    <Users2 className="h-5 w-5" />
-                    <span>Contact Sales Team</span>
-                  </Link>
-                </Button>
+<Button
+  asChild
+  size="lg"
+  variant="outline"
+  className="border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3 backdrop-blur-sm flex items-center gap-2"
+>
+  <a 
+    href="https://wa.me/919930670707" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <Users2 className="h-5 w-5" />
+    <span>Contact Sales Team</span>
+  </a>
+</Button>
+
+
+
               </div>
             </motion.div>
           </div>

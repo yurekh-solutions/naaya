@@ -6,6 +6,11 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { TrendingUp, Users, Package, Clock, Mic, BarChart3, Zap, Shield, Globe, Award, ArrowRight, Play } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import SEOHead from "@/components/SEOHead";
+import FAQ from "@/components/FAQ";
+import Testimonials from "@/components/Testimonials";
+import HowItWorks from "@/components/HowItWorks";
+import MarketIntelligence from "@/components/MarketIntelligence";
+import CaseStudies from "@/components/CaseStudies";
 import heroImage from "../assets/hero-construction.jpg";
 import warehouseImage from "../assets/materials-warehouse.jpg";
 
@@ -13,20 +18,57 @@ const Home = () => {
   const statsRef = useRef(null);
   const featuresRef = useRef(null);
   const dashboardRef = useRef(null);
-    const servicesRef = useRef(null);
+  const servicesRef = useRef(null);
 
-  
   const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
   const isFeaturesInView = useInView(featuresRef, { once: true, margin: "-100px" });
   const isDashboardInView = useInView(dashboardRef, { once: true, margin: "-100px" });
   const isServicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
 
-  const stats = [
-    { label: "Total Orders", value: 1234, change: "+2.4%", icon: Package, positive: true },
-    { label: "Pending Approvals", value: 28, change: "-3.2%", icon: Clock, positive: false },
-    { label: "Suppliers", value: 87, change: "+5.1%", icon: Users, positive: true },
-    { label: "Avg. Delivery Time", value: 4.2, unit: "days", change: "-1.2%", icon: TrendingUp, positive: true },
-  ];
+  // Dynamic stats based on current time
+  const generateDynamicStats = () => {
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const day = now.getDate();
+    
+    const baseMultiplier = 1 + Math.sin((hour + minute / 60) * Math.PI / 12) * 0.15;
+    const dayMultiplier = 1 + Math.sin(day * Math.PI / 15) * 0.08;
+    
+    return [
+      { 
+        label: "Total Orders", 
+        value: Math.round(1234 * baseMultiplier * dayMultiplier), 
+        change: "+2.4%", 
+        icon: Package, 
+        positive: true 
+      },
+      { 
+        label: "Pending Approvals", 
+        value: Math.round(28 * (2 - baseMultiplier) * dayMultiplier), 
+        change: "-3.2%", 
+        icon: Clock, 
+        positive: false 
+      },
+      { 
+        label: "Suppliers", 
+        value: Math.round(87 * (1 + dayMultiplier * 0.1)), 
+        change: "+5.1%", 
+        icon: Users, 
+        positive: true 
+      },
+      { 
+        label: "Avg. Delivery Time", 
+        value: Math.round(4.2 * (2 - baseMultiplier) * 10) / 10, 
+        unit: "days", 
+        change: "-1.2%", 
+        icon: TrendingUp, 
+        positive: true 
+      },
+    ];
+  };
+
+  const stats = generateDynamicStats();
 
   const features = [
     {
@@ -80,6 +122,7 @@ const Home = () => {
       description: "Competitive pricing with transparent cost breakdowns"
     }
   ];
+
   const productCategories = [
     {
       title: "TMT & Steel",
@@ -88,13 +131,7 @@ const Home = () => {
       items: ["TMT Bars", "Structural Steel", "Mild Steel", "Steel Pipes"],
       gradient: "from-primary/20 to-accent/20"
     },
-    {
-      title: "Stainless Steel",
-      description: "Premium stainless steel in various grades and forms",
-      icon: "⚡",
-      items: ["SS 304 Sheets", "SS 316 Pipes", "SS Bars", "SS Coils"],
-      gradient: "from-accent/20 to-primary-glow/20"
-    },
+   
     {
       title: "Construction Materials",
       description: "Complete range of construction essentials",
@@ -108,21 +145,39 @@ const Home = () => {
       icon: "🔌",
       items: ["Cables", "Switches", "MCBs", "Panels"],
       gradient: "from-primary/20 to-accent/20"
-    }
+    },
+     {
+      title: "Stainless Steel",
+      description: "Premium stainless steel in various grades and forms",
+      icon: "⚡",
+      items: ["SS 304 Sheets", "SS 316 Pipes", "SS Bars", "SS Coils"],
+      gradient: "from-accent/20 to-primary-glow/20"
+    },
   ];
 
-  const realtimeMetrics = [
-    { label: "Active Quotes", value: 124, unit: "", trend: "up" },
-    { label: "Processing", value: 47, unit: "", trend: "up" },
-    { label: "Completed Today", value: 89, unit: "", trend: "up" },
-    { label: "Avg Response", value: 23, unit: "min", trend: "down" }
-  ];
+  // Dynamic real-time metrics that change
+  const generateRealtimeMetrics = () => {
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    
+    const activeMultiplier = 1 + Math.sin((hour + minute / 30) * Math.PI / 6) * 0.2;
+    
+    return [
+      { label: "Active Quotes", value: Math.round(124 * activeMultiplier), unit: "", trend: "up" },
+      { label: "Processing", value: Math.round(47 * activeMultiplier), unit: "", trend: "up" },
+      { label: "Completed Today", value: Math.round(89 * (1 + hour / 24)), unit: "", trend: "up" },
+      { label: "Avg Response", value: Math.round(23 * (2 - activeMultiplier)), unit: "min", trend: "down" }
+    ];
+  };
+
+  const realtimeMetrics = generateRealtimeMetrics();
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "NaayaConstruction",
-    "description": "AI-powered construction material Naayaconstruction platform",
+    "description": "AI-powered construction material procurement platform",
     "url": "https://naayaconstruction.com",
     "potentialAction": {
       "@type": "SearchAction",
@@ -152,15 +207,15 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title="NaayaConstruction - AI-Powered Construction Material Naayaconstruction Platform"
+        title="NaayaConstruction - AI-Powered Construction Material Procurement Platform"
         description="Revolutionize your construction material sourcing with NaayaConstruction's AI-powered platform. Get instant quotes from 500+ verified suppliers across India. TMT, Steel, Cement & more."
-        keywords="construction materials, AI Naayaconstruction, B2B marketplace, TMT steel, construction supplies, material sourcing, building materials, construction platform"
+        keywords="construction materials, AI procurement, B2B marketplace, TMT steel, construction supplies, material sourcing, building materials, construction platform"
         structuredData={structuredData}
       />
 
       <div className="min-h-screen bg-background">
         {/* Enhanced Hero Section */}
-        <section className="relative overflow-hidden py-20 lg:py-32">
+             <section className="relative overflow-hidden py-20 lg:py-32">
           {/* Background with Parallax Effect */}
           <motion.div
             className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -222,7 +277,7 @@ const Home = () => {
                     Raw Material
                     <br />
                     <span className="bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent">
-                      Naayaconstruction
+                      Procurement
                     </span>
                   </motion.h1>
 
@@ -232,35 +287,41 @@ const Home = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 1 }}
                   >
-                    AI-powered Naayaconstruction platform revolutionizing the way businesses source TMT, Structures, 
+                    AI-powered Procurement platform revolutionizing the way businesses source raw material like TMT, Structures, 
                     Flats & Bitumen. Get instant quotes, verify suppliers, and track deliveries in real-time.
                   </motion.p>
                 </div>
                 
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-6"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.8 }}
-                >
-                  <Button 
-                    size="lg" 
-                    className="bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105 text-lg px-8 py-4"
-                  >
-                    <Link to="/products" className="flex items-center space-x-2">
-                      <span>Submit RFQ</span>
-                      <ArrowRight className="h-5 w-5" />
-                    </Link>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="glass-morphism border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4"
-                  >
-                    <Mic className="h-5 w-5 mr-2" />
-                    Voice AI
-                  </Button>
-                </motion.div>
+               <motion.div
+  className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.7, duration: 0.8 }}
+>
+  {/* Submit RFQ */}
+  <Button
+    size="lg"
+    className="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-lg px-6 py-3"
+  >
+    <Link to="/products" className="flex items-center justify-center space-x-2">
+      <span>Submit RFQ</span>
+      <ArrowRight className="h-5 w-5" />
+    </Link>
+  </Button>
+
+  {/* Voice AI */}
+  <Link to="/bani" className="w-full sm:w-auto">
+    <Button
+      variant="outline"
+      size="lg"
+      className="w-full sm:w-auto glass-morphism border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3"
+    >
+      <Mic className="h-5 w-5 mr-2" />
+      Voice AI
+    </Button>
+  </Link>
+</motion.div>
+
 
                 {/* Trust Indicators */}
                 <motion.div
@@ -330,7 +391,7 @@ const Home = () => {
                         <div className="text-2xl font-bold text-foreground">
                           <AnimatedCounter 
                             end={metric.value} 
-                            duration={2}
+                            duration={0}
                             suffix={metric.unit}
                           />
                         </div>
@@ -394,9 +455,157 @@ const Home = () => {
             </div>
           </div>
         </section>
+        <section className="py-12  bg-gradient sm:py-16 lg:py-24">
+  <div className="container mx-auto px-3 sm:px-4">
+    {/* Section Heading */}
+    <motion.div
+      className="text-center mb-10 sm:mb-16"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+        <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          Our Key Offerings        </span>
+      </h2>
+      <div className="w-16 sm:w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-4 sm:mb-6" />
+      <p className="text-sm sm:text-lg lg:text-xl text-muted-foreground max-w-2xl sm:max-w-3xl mx-auto">
+        Transform your business with AI-powered procurement solutions designed
+        for speed, intelligence, and always-on visibility.
+      </p>
+    </motion.div>
+
+    {/* Solutions Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+      {/* Card Template */}
+      {[
+        {
+          icon: "🌟",
+          label: "Smart Deal Flow",
+          title: "Supplier Matching Agent",
+          desc: "Turn procurement chaos into clockwork. Smart AI handles negotiations, paperwork, and payments – while you focus on scaling your business.",
+          stat: "2X",
+          statLabel: "Accelerated Deal Velocity",
+        },
+        {
+          icon: "💹",
+          label: "Market Intelligence",
+          title: "Pricing Intelligence Agent",
+          desc: "Never overpay again. Real-time price intelligence across markets, with AI that spots the best deals before your competitors do.",
+          stat: "12%",
+          statLabel: "Average Cost Optimization",
+        },
+        {
+          icon: "🛡️",
+          label: "Risk Management",
+          title: "Risk Management Agent",
+          desc: "Minimize procurement risks with AI-powered monitoring of suppliers, compliance checks, and predictive alerts for disruptions.",
+          stat: "99.9%",
+          statLabel: "Risk-Free Operations",
+        },
+        {
+          icon: "🔗",
+          label: "Supply Chain Intelligence",
+          title: "Supply Chain Agent",
+          desc: "Your procurement command center. Real-time tracking, instant insights, and automated vendor communications – all in one place.",
+          stat: "24/7",
+          statLabel: "Always-On Supply Intelligence",
+        },
+      ].map((card, i) => (
+       <GlassCard
+  key={i}
+  className="group flex flex-col justify-between p-5 sm:p-6 lg:p-8 rounded-2xl 
+  border border-white/10 shadow-md shadow-black/20 
+  hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 ease-out
+  h-auto sm:h-[420px]"
+>
+
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="p-2 bg-primary/10 rounded-lg text-primary text-lg">
+                {card.icon}
+              </span>
+              <span className="text-xs sm:text-sm font-medium text-muted-foreground">
+                {card.label}
+              </span>
+            </div>
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4">
+              {card.title}
+            </h3>
+            <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed pt-1 sm:pt-2">
+              {card.desc}
+            </p>
+          </div>
+          <div className="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10">
+            <div className="text-primary font-bold text-lg sm:text-2xl">
+              {card.stat}
+            </div>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              {card.statLabel}
+            </p>
+          </div>
+        </GlassCard>
+      ))}
+    </div>
+  </div>
+</section>
+ <section className="py-20 bg-gradient-subtle" ref={servicesRef}>
+          <div className="container mx-auto px-4">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isServicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Our Products
+                </span>
+              </h2>
+              <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-6" />
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Comprehensive range of construction materials from verified suppliers across India
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate={isServicesInView ? "visible" : "hidden"}
+            >
+              {productCategories.map((category, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <GlassCard 
+                    variant="premium" 
+                    className={`p-6 h-full group bg-gradient-to-br ${category.gradient} hover:shadow-elevation transition-all duration-500`}
+                  >
+                    <div className="text-center">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                        {category.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-foreground mb-3">{category.title}</h3>
+                      <p className="text-muted-foreground mb-4 text-sm">{category.description}</p>
+                      <div className="space-y-1">
+                       
+                      </div>
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>             
+
+
+        <HowItWorks />
+
+
+
 
         {/* Enhanced Features Section */}
-        <section className="py-20 bg-gradient-secondary" ref={featuresRef}>
+        <section className="py-20 bg-gradient-subtle" ref={featuresRef}>
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
@@ -411,7 +620,7 @@ const Home = () => {
               </h2>
               <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-6" />
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Experience the future of construction material Naayaconstruction with our cutting-edge platform
+                Experience the future of construction material procurement with our cutting-edge platform
               </p>
             </motion.div>
 
@@ -512,58 +721,24 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Demo Video Section */}
-       <section className="py-20 bg-gradient-secondary" ref={servicesRef}>
-          <div className="container mx-auto px-4">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isServicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Our Product Categories
-                </span>
-              </h2>
-              <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mb-6" />
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Comprehensive range of construction materials from verified suppliers across India
-              </p>
-            </motion.div>
+        {/* Product Categories Section */}
+       
 
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isServicesInView ? "visible" : "hidden"}
-            >
-              {productCategories.map((category, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <GlassCard 
-                    variant="premium" 
-                    className={`p-6 h-full group bg-gradient-to-br ${category.gradient} hover:shadow-elevation transition-all duration-500`}
-                  >
-                    <div className="text-center">
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                        {category.icon}
-                      </div>
-                      <h3 className="text-xl font-semibold text-foreground mb-3">{category.title}</h3>
-                      <p className="text-muted-foreground mb-4 text-sm">{category.description}</p>
-                      <div className="space-y-1">
-                        {category.items.map((item, itemIndex) => (
-                          <div key={itemIndex} className="text-xs text-primary font-medium">
-                            • {item}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+        {/* How It Works Section */}
+        
+
+        {/* Market Intelligence Section */}
+        {/* <MarketIntelligence /> */}
+
+        {/* Case Studies Section */}
+        {/* <CaseStudies /> */}
+
+        {/* Testimonials Section */}
+
+        {/* FAQ Section */}
+        <FAQ />
+        <Testimonials />
+
         {/* Enhanced CTA Section */}
         <section className="py-20 bg-gradient-primary relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 to-accent/95" />
@@ -588,7 +763,7 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl lg:text-6xl font-bold text-primary-foreground mb-8">
-                Ready to Transform Your Naayaconstruction?
+                Ready to Transform Your Procurement?
               </h2>
               <p className="text-xl lg:text-2xl text-primary-foreground/90 mb-12 max-w-4xl mx-auto leading-relaxed">
                 Start sourcing materials smarter with our AI-powered platform. Get instant quotes, 
@@ -600,9 +775,12 @@ const Home = () => {
                   variant="secondary" 
                   className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300"
                 >
-                  <Link to="/products" className="flex items-center space-x-2">
+                                      <Link to="/products" className="flex items-center space-x-2">
+
+                  <div className="flex items-center space-x-2">
                     <span>Get Started Today</span>
                     <ArrowRight className="h-6 w-6" />
+                  </div>
                   </Link>
                 </Button>
                 <Button 
@@ -610,9 +788,12 @@ const Home = () => {
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 text-xl px-12 py-6 backdrop-blur-sm"
                 >
-                  <Link to="/about" className="flex items-center space-x-2">
+                                      <Link to="/about" className="flex items-center space-x-2">
+
+                  <div className="flex items-center space-x-2">
                     <span>Learn More</span>
                     <Play className="h-6 w-6" />
+                  </div>
                   </Link>
                 </Button>
               </div>

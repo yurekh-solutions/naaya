@@ -527,6 +527,8 @@ All colors MUST be HSL.
     transform: scale(1.05);
   }
 
+
+  
   /* Enhanced Gradient Backgrounds */
   .bg-gradient-primary {
     background: var(--gradient-primary);
