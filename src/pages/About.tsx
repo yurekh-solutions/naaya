@@ -206,100 +206,108 @@ const About = () => {
 
       <div className="min-h-screen bg-background overflow-hidden">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative py-16 lg:py-24 min-h-[700px] overflow-hidden">
-          {/* Animated Background */}
-          <motion.div
-            className="absolute inset-0 z-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${officeBuilding})` }}
-            initial={{ scale: 1.2, opacity: 0}}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          />
+        <section
+  ref={heroRef}
+  className="relative py-16 lg:py-24 min-h-[700px] overflow-hidden flex items-center justify-center"
+>
+  {/* Animated Background */}
+  <motion.div
+    className="absolute inset-0 z-0 bg-cover bg-center"
+    style={{ backgroundImage: `url(${officeBuilding})` }}
+    initial={{ scale: 1.2, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ duration: 1.5, ease: "easeOut" }}
+  />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/20" />
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/20" />
 
-          {/* Floating Elements */}
-          <motion.div
-            className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-primary/20 blur-xl"
-            animate={{ 
-              y: [0, 50, 0], 
-              x: [0, 30, 0],
-              opacity: [0.3, 0.6, 0.3] 
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent/15 blur-3xl"
-            animate={{ 
-              y: [0, -40, 0], 
-              x: [0, -20, 0],
-              opacity: [0.2, 0.5, 0.2] 
-            }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          />
+  {/* Floating Elements */}
+  <motion.div
+    className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-primary/20 blur-xl"
+    animate={{
+      y: [0, 50, 0],
+      x: [0, 30, 0],
+      opacity: [0.3, 0.6, 0.3],
+    }}
+    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+  />
+  <motion.div
+    className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent/15 blur-3xl"
+    animate={{
+      y: [0, -40, 0],
+      x: [0, -20, 0],
+      opacity: [0.2, 0.5, 0.2],
+    }}
+    transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+  />
 
-          {/* Content */}
-          <div className="relative container mx-auto px-4 text-center h-full flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <Badge 
-                className="mb-6 bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-sm px-4 py-2"
-                variant="outline"
-              >
-                Revolutionizing Procurement 
-              </Badge>
-            </motion.div>
+  {/* Content */}
+  <div className="relative container mx-auto px-4 text-center">
+    {/* Badge */}
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
+      <Badge
+        className="mb-6 bg-primary/20 text-primary border-primary/30 backdrop-blur-sm text-sm px-4 py-2"
+        variant="outline"
+      >
+        Revolutionizing Procurement
+      </Badge>
+    </motion.div>
 
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
-              initial={{ y: 40, opacity: 0 }}
-              animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-            >
-              <span className="bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent">
-                About NaayaConstruction
-              </span>
-            </motion.h1>
+    {/* Heading */}
+    <motion.h1
+      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight"
+      initial={{ y: 40, opacity: 0 }}
+      animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+    >
+      <span className="bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent">
+        About NaayaConstruction
+      </span>
+    </motion.h1>
 
-            <motion.p
-              className="text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed"
-              initial={{ y: 30, opacity: 0 }}
-              animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-              transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
-            >
-              We're revolutionizing the construction industry with AI-powered
-              solutions, making it easier for businesses to source quality materials efficiently,
-              transparently, and cost-effectively across the world.
-            </motion.p>
+    {/* Paragraph */}
+    <motion.p
+      className="text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed"
+      initial={{ y: 30, opacity: 0 }}
+      animate={isHeroInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+      transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
+    >
+      We're revolutionizing the construction industry with AI-powered solutions,
+      making it easier for businesses to source quality materials efficiently,
+      transparently, and cost-effectively across the world.
+    </motion.p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-lg px-6 py-3"
-              >
-                <Users2 className="h-5 w-5 mr-2" />
-                <span>Join Our Network</span>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="glass-morphism border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3"
-              >
-                <Building className="h-5 w-5 mr-2" />
-                <span>Explore Platform</span>
-              </Button>
-            </motion.div>
-          </div>
-        </section>
+    {/* Buttons */}
+    <motion.div
+      className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+    >
+      <Button
+        size="lg"
+        className="bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-lg px-6 py-3"
+      >
+        <Users2 className="h-5 w-5 mr-2" />
+        <span>Join Our Network</span>
+      </Button>
+      <Button
+        variant="outline"
+        size="lg"
+        className="glass-morphism border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3"
+      >
+        <Building className="h-5 w-5 mr-2" />
+        <span>Explore Platform</span>
+      </Button>
+    </motion.div>
+  </div>
+</section>
+
 
         {/* About Section with Carousel */}
         <section ref={aboutSectionRef} className="py-16 lg:py-20 overflow-hidden">
