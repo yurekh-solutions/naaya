@@ -728,10 +728,10 @@ const Home = () => {
         
 
         {/* Market Intelligence Section */}
-        {/* <MarketIntelligence /> */}
+        <MarketIntelligence />
 
         {/* Case Studies Section */}
-        {/* <CaseStudies /> */}
+        <CaseStudies />
 
         {/* Testimonials Section */}
 

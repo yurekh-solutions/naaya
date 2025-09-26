@@ -130,40 +130,91 @@ const HowItWorks = () => {
         </motion.div>
 
         {/* Process Cards - Desktop */}
-      
-
-        {/* Timeline Layout - Mobile */}
-        <div className="lg:hidden ">
-          <div className="relative pl-4">
-            <div className="absolute left-12 top-0 bottom-0 w-0.5 z-10  bg-gradient-to-b from-primary via-accent to-primary-glow" />
-
-            {steps.map((step, index) => (
-              <motion.div
-                key={`mobile-${index}`}
-                className="relative flex items-start space-x-6 mb-12 last:mb-0"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                {/* Dot/Icon */}
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-primary-foreground font-bold z-10 animate-pulse-glow">
-                  <step.icon className="h-6 w-6" />
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 pt-2 pr-2">
-                  <h4 className="text-lg font-semibold text-foreground mb-2">
-                    {step.title}
-                  </h4>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Process Cards - Desktop */}
+<motion.div
+  className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-20"
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+>
+  {steps.map((step, index) => (
+    <motion.div key={index} variants={itemVariants} className="relative">
+      <GlassCard
+        variant="premium"
+        className={`h-full group p-6 sm:p-8 bg-gradient-to-br ${step.color} hover:shadow-elevation transition-all duration-500`}
+      >
+        {/* Step Number */}
+        <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm z-10">
+          {index + 1}
         </div>
+
+        {/* Icon */}
+        <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+          <step.icon className="h-8 w-8 text-primary-foreground" />
+        </div>
+
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-foreground mb-3 text-center">
+          {step.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-muted-foreground mb-4 leading-relaxed text-center">
+          {step.description}
+        </p>
+
+        {/* Details */}
+        <ul className="space-y-2">
+          {step.details.map((detail, detailIndex) => (
+            <li key={detailIndex} className="flex items-start space-x-2">
+              <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+              <span className="text-sm text-muted-foreground">{detail}</span>
+            </li>
+          ))}
+        </ul>
+      </GlassCard>
+
+      {/* Connecting line for desktop */}
+      {index < steps.length - 1 && (
+        <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/50 to-transparent z-0" />
+      )}
+    </motion.div>
+  ))}
+</motion.div>
+
+{/* Timeline Layout - Mobile */}
+<div className="sm:hidden">
+  <div className="relative pl-4">
+    <div className="absolute left-12 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary-glow" />
+
+    {steps.map((step, index) => (
+      <motion.div
+        key={`mobile-${index}`}
+        className="relative flex items-start space-x-6 mb-12 last:mb-0"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.1, duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        {/* Dot/Icon */}
+        <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center text-primary-foreground font-bold z-10 animate-pulse-glow">
+          <step.icon className="h-6 w-6" />
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 pt-2 pr-2">
+          <h4 className="text-lg font-semibold text-foreground mb-2">
+            {step.title}
+          </h4>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {step.description}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
         {/* CTA Section */}
         <motion.div
