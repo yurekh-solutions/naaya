@@ -289,13 +289,21 @@ const About = () => {
       animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
     >
-      <Button
-        size="lg"
-        className="bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-lg px-6 py-3"
-      >
-        <Users2 className="h-5 w-5 mr-2" />
-        <span>Join Our Network</span>
-      </Button>
+     <a
+  href="https://docs.google.com/forms/d/e/1FAIpQLScz0OMJvJd-gyI1D-oaeJRo3duwtzpuVAljPXh9ymN9Ix2f6w/viewform?pli=1"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button
+    size="lg"
+    className="bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-lg px-6 py-3"
+  >
+    <Users2 className="h-5 w-5 mr-2" />
+    <span>Join Our Network</span>
+  </Button>
+</a>
+                    <Link to="/products" className="flex items-center space-x-2">
+
       <Button
         variant="outline"
         size="lg"
@@ -304,6 +312,7 @@ const About = () => {
         <Building className="h-5 w-5 mr-2" />
         <span>Explore Platform</span>
       </Button>
+      </Link >
     </motion.div>
   </div>
 </section>
@@ -828,22 +837,26 @@ const About = () => {
                 Join thousands of businesses who trust NaayaConstruction for their 
                 procurement needs. Experience the future of sourcing with our AI-powered platform.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg" 
                   variant="secondary"
                   className="bg-white text-primary hover:bg-white/90 text-lg px-6 py-3 transform hover:scale-105 transition-all duration-300"
                 >
-                  <Building className="h-5 w-5 mr-2" />
-                  <span>Start Sourcing Now</span>
+                  <Link to="/products" className="flex items-center space-x-2">
+                    <Building className="h-5 w-5" />
+                    <span>Start Sourcing Now</span>
+                  </Link>
                 </Button>
                 <Button 
                   size="lg"
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3 backdrop-blur-sm"
                 >
-                  <Users2 className="h-5 w-5 mr-2" />
-                  <span>Contact Sales Team</span>
+                  <Link to="/contact" className="flex items-center space-x-2">
+                    <Users2 className="h-5 w-5" />
+                    <span>Contact Sales Team</span>
+                  </Link>
                 </Button>
               </div>
             </motion.div>
