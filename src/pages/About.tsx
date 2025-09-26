@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Shield, Zap, Users, Globe, Award, Target, TrendingUp, Building, Download, Users2, Star, CheckCircle, Truck, DollarSign } from "lucide-react";
+import { Shield, Zap, Users, Globe, Award, Target, TrendingUp, Building, Download, Users2, Star, CheckCircle, Truck, DollarSign, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -204,9 +204,9 @@ const About = () => {
         structuredData={structuredData}
       />
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background overflow-hidden">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative py-16 lg:py-24 overflow-hidden">
+        <section ref={heroRef} className="relative py-16 lg:py-24 min-h-[700px] overflow-hidden">
           {/* Animated Background */}
           <motion.div
             className="absolute inset-0 z-0 bg-cover bg-center"
@@ -240,7 +240,7 @@ const About = () => {
           />
 
           {/* Content */}
-          <div className="relative container mx-auto px-4 text-center">
+          <div className="relative container mx-auto px-4 text-center h-full flex flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
@@ -286,20 +286,16 @@ const About = () => {
                 size="lg"
                 className="bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-lg px-6 py-3"
               >
-                <Link to="/contact" className="flex items-center space-x-2">
-                  <Users2 className="h-5 w-5" />
-                  <span>Join Our Network</span>
-                </Link>
+                <Users2 className="h-5 w-5 mr-2" />
+                <span>Join Our Network</span>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="glass-morphism border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3"
               >
-                <Link to="/products" className="flex items-center space-x-2">
-                  <Building className="h-5 w-5" />
-                  <span>Explore Platform</span>
-                </Link>
+                <Building className="h-5 w-5 mr-2" />
+                <span>Explore Platform</span>
               </Button>
             </motion.div>
           </div>
@@ -317,7 +313,7 @@ const About = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
               >
                 <div className="relative transform-3d">
-                  <div className="p-2 ">
+                  <div className="p-2">
                     <ImageCarousel 
                       images={carouselImages}
                       className="h-80 lg:h-96 rounded-xl"
@@ -387,10 +383,8 @@ const About = () => {
                     size="lg"
                     className="glass-morphism border-primary/30 text-primary hover:bg-primary/10 text-lg px-6 py-3"
                   >
-                    <Link to="/contact" className="flex items-center">
-                      <Users2 className="h-5 w-5 mr-2" />
-                      Contact Us
-                    </Link>
+                    <Users2 className="h-5 w-5 mr-2" />
+                    Contact Us
                   </Button>
                 </motion.div>
               </motion.div>
@@ -399,7 +393,7 @@ const About = () => {
         </section>
 
         {/* Naayatrade Section */}
-        <section ref={naayatradeRef} className="py-16 lg:py-20 bg-gradient-subtle">
+        <section ref={naayatradeRef} className="py-16 lg:py-20 bg-gradient-subtle overflow-hidden">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Side - Content */}
@@ -410,19 +404,21 @@ const About = () => {
                 transition={{ duration: 1, ease: "easeOut" }}
               >
                 <motion.h2
-                  className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
+                  className="text-3xl lg:text-4xl font-bold mb-4"
                   initial={{ y: 40, opacity: 0 }}
                   animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
+                  transition={{ duration: 1, delay: 0.2 }}
                 >
-                  NaayaConstruction, a proud division of Naayatrade
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent">
+                    NaayaConstruction, a proud division of Naayatrade
+                  </span>
                 </motion.h2>
 
                 <motion.p
                   className="text-base lg:text-lg text-muted-foreground leading-relaxed"
                   initial={{ y: 30, opacity: 0 }}
                   animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-                  transition={{ delay: 0.5, duration: 1 }}
+                  transition={{ delay: 0.4, duration: 1 }}
                 >
                   NaayaConstruction proudly operates as part of Naayatrade, the world's emerging powerhouse in global wholesale and digital trade. This association reflects our steadfast commitment to delivering the same excellence, innovation, and forward-thinking approach that define Naayatrade.
                 </motion.p>
@@ -431,52 +427,93 @@ const About = () => {
                   className="text-base lg:text-lg text-muted-foreground leading-relaxed"
                   initial={{ y: 30, opacity: 0 }}
                   animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-                  transition={{ delay: 0.7, duration: 1 }}
+                  transition={{ delay: 0.6, duration: 1 }}
                 >
                   By drawing on Naayatrade's expertise in building scalable marketplaces, supply chain networks, and cutting-edge digital ecosystems, NaayaConstruction provides unmatched value to contractors, builders, and enterprises.
                 </motion.p>
 
                 <motion.div
+                  className="pt-4"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isNaayatradeInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                  transition={{ delay: 0.9, duration: 0.8 }}
+                  transition={{ delay: 0.8, duration: 0.8 }}
                 >
                   <Button
+                    variant="outline"
                     size="lg"
-                    className="text-lg px-6 py-3 font-semibold bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg hover:scale-105 hover:shadow-glow transition-all duration-300"
-                    onClick={() => window.open('https://naayatrade.com/', '_blank')}
+                    className="glass-morphism border-primary/30 text-primary hover:bg-primary/10 text-lg px-6 py-3 group"
+                                        onClick={() => window.open('https://naayatrade.com/', '_blank')}
+
                   >
+                    <ExternalLink className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
                     More Details
                   </Button>
                 </motion.div>
               </motion.div>
-              
-              {/* Right Side - Logo */}
+
+              {/* Right Side - Naayatrade Logo and Branding */}
               <motion.div
                 className="relative order-1 lg:order-2"
                 initial={{ opacity: 0, x: 100 }}
                 animate={isNaayatradeInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
               >
-                <div className="relative transform-3d glass">
-                  <div className="p-4relative">
-                    <img 
-                      src={naayatradeLogo} 
-                      alt="Naayatrade Logo" 
-                      className="w-full max-w-md mx-auto h-auto object-contain rounded-lg" 
-                    />
-                    
-                    {/* Overlay text */}
-                    <motion.h3
-                      className=" absolute bottom-4 left-1/4 transform -translate-x-3/4 text-center text-2xl lg:text-4xl lg:ml-4     font-extrabold bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent"
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                      transition={{ duration: 1, delay: 0.5 }}
-                    >
+                <GlassCard variant="premium" className="p-8 lg:p-12 text-center">
+                  <motion.div
+                    className="relative mb-6"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 relative">
+                      <img
+                        src={naayatradeLogo}
+                        alt="Naayatrade Logo"
+                        className="w-full h-full object-contain animate-float-gentle"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-xl animate-glow-pulse" />
+                    </div>
+                  </motion.div>
+                  
+                  <motion.h3
+                    className="text-2xl lg:text-3xl font-bold mb-4"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                    transition={{ delay: 1, duration: 0.8 }}
+                  >
+                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                       NAAYATRADE
-                    </motion.h3>
-                  </div>
-                </div>
+                    </span>
+                  </motion.h3>
+                  
+                  <motion.p
+                    className="text-muted-foreground text-sm lg:text-base mb-6"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
+                  >
+                    Global Wholesale & Digital Trade Platform
+                  </motion.p>
+
+                  <motion.div
+                    className="grid grid-cols-2 gap-4 text-center"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={isNaayatradeInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                    transition={{ delay: 1.4, duration: 0.8 }}
+                  >
+                    <div className="space-y-2">
+                      <div className="text-2xl font-bold text-primary">
+                        <AnimatedCounter end={50} suffix="+" />
+                      </div>
+                      <p className="text-xs text-muted-foreground">Countries</p>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="text-2xl font-bold text-accent">
+                        <AnimatedCounter end={10000} suffix="+" />
+                      </div>
+                      <p className="text-xs text-muted-foreground">Partners</p>
+                    </div>
+                  </motion.div>
+                </GlassCard>
               </motion.div>
             </div>
           </div>
@@ -789,20 +826,16 @@ const About = () => {
                   variant="secondary"
                   className="bg-white text-primary hover:bg-white/90 text-lg px-6 py-3 transform hover:scale-105 transition-all duration-300"
                 >
-                  <Link to="/products" className="flex items-center space-x-2">
-                    <Building className="h-5 w-5" />
-                    <span>Start Sourcing Now</span>
-                  </Link>
+                  <Building className="h-5 w-5 mr-2" />
+                  <span>Start Sourcing Now</span>
                 </Button>
                 <Button 
                   size="lg"
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3 backdrop-blur-sm"
                 >
-                  <Link to="/contact" className="flex items-center space-x-2">
-                    <Users2 className="h-5 w-5" />
-                    <span>Contact Sales Team</span>
-                  </Link>
+                  <Users2 className="h-5 w-5 mr-2" />
+                  <span>Contact Sales Team</span>
                 </Button>
               </div>
             </motion.div>

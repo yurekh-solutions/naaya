@@ -33,30 +33,30 @@ const Footer = () => {
     href="https://wa.me/+918657494046"
     target="_blank"
     rel="noopener noreferrer"
-    className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-pulse-glow"
+    className="group w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-pulse-glow"
     aria-label="Contact us on WhatsApp"
   >
-    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-600" />
+    <MessageCircle className="w-6 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-orange-600" />
   </a>
 
   {/* Phone */}
   <a
   href="tel:+918657494046"
-  className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300"
+  className="group w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300"
   aria-label="Call us directly"
 >
-  <Phone className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+  <Phone className="w-6 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
 </a>
 
   {/* Back to Top */}
   {showScrollTop && (
     <button
       onClick={scrollToTop}
-      className="group w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center rounded-full              bg-gradient-to-r from-orange-500 to-red-500 
+      className="group w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 flex items-center justify-center rounded-full              bg-gradient-to-r from-orange-500 to-red-500 
  shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-bounce-in"
       aria-label="Scroll to top"
     >
-      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+      <ChevronUp className="w-6 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
       <span className="absolute right-full mr-3 px-3 py-1 bg-background text-foreground text-xs sm:text-sm rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none">
         Back to Top
       </span>
