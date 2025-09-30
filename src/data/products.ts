@@ -22,7 +22,7 @@ export interface Product {
   name: string;
   category: string;
   image: string;
-  brand?: string;
+  // brand?: string;
   material?: string;
   description?: string;
 }
@@ -84,46 +84,65 @@ const sizes = ["6mm", "8mm", "10mm", "12mm", "16mm", "20mm", "25mm", "32mm", "40
 const grades = ["Grade A", "Grade B", "Grade C", "Grade D", "IS2062", "IS1786", "SS304", "SS316", "SS201"];
 
 // Generate comprehensive product list
+// export const generateProducts = (): Product[] => {
+//   const products: Product[] = [];
+//   let productId = 1;
+
+//   productTemplates.forEach(template => {
+//     const variantsCount = Math.floor(Math.random() * 8) + 15; // 15-23 variants
+
+//     for (let i = 0; i < variantsCount; i++) {
+//       const brand = brands[Math.floor(Math.random() * brands.length)];
+//       const size = sizes[Math.floor(Math.random() * sizes.length)];
+//       const grade = grades[Math.floor(Math.random() * grades.length)];
+
+//       let productName = template.name;
+
+//       if (template.category === "Mild Steel" || template.category === "Stainless Steel") {
+//         productName += ` ${size}`;
+//         if (Math.random() > 0.4) {
+//           productName += ` ${grade}`;
+//         }
+//       }
+
+//       if (Math.random() > 0.2) {
+//         productName += ` - ${brand}`;
+//       }
+
+//       products.push({
+//         id: `product-${productId}`,
+//         name: productName,
+//         category: template.category,
+//         image: template.image,
+//         // brand: brand,
+//         material: grade,
+//         description: template.description
+//       });
+
+//       productId++;
+//     }
+//   });
+
+//   return products;
+// };
+
 export const generateProducts = (): Product[] => {
   const products: Product[] = [];
   let productId = 1;
 
   productTemplates.forEach(template => {
-    const variantsCount = Math.floor(Math.random() * 8) + 15; // 15-23 variants
-
-    for (let i = 0; i < variantsCount; i++) {
-      const brand = brands[Math.floor(Math.random() * brands.length)];
-      const size = sizes[Math.floor(Math.random() * sizes.length)];
-      const grade = grades[Math.floor(Math.random() * grades.length)];
-
-      let productName = template.name;
-
-      if (template.category === "Mild Steel" || template.category === "Stainless Steel") {
-        productName += ` ${size}`;
-        if (Math.random() > 0.4) {
-          productName += ` ${grade}`;
-        }
-      }
-
-      if (Math.random() > 0.2) {
-        productName += ` - ${brand}`;
-      }
-
-      products.push({
-        id: `product-${productId}`,
-        name: productName,
-        category: template.category,
-        image: template.image,
-        brand: brand,
-        material: grade,
-        description: template.description
-      });
-
-      productId++;
-    }
+    products.push({
+      id: `product-${productId}`,
+      name: template.name, // ✅ Only clean product name
+      category: template.category,
+      image: template.image,
+      description: template.description,
+    });
+    productId++;
   });
 
   return products;
 };
+
 
 export const allProducts = generateProducts();

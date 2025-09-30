@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import FAQ from "./components/FAQ";
+import Bani from "./pages/Bani";
 
 // import Terms from "./pages/TermsCondition";
 
@@ -34,6 +35,8 @@ const App = () => (
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
                         <Route path="/product/:id" element={<ProductDetail />} />
+                                    <Route path="/bani" element={<Bani />} />
+
           <Route path="/privacy" element={<Privacy />} />
                     <Route path="/terms" element={<Terms />} />
 

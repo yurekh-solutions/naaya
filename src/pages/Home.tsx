@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef , useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -24,7 +24,11 @@ const Home = () => {
   const isFeaturesInView = useInView(featuresRef, { once: true, margin: "-100px" });
   const isDashboardInView = useInView(dashboardRef, { once: true, margin: "-100px" });
   const isServicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
-
+    const [step, setStep] = useState(1);
+  
+ useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
   // Dynamic stats based on current time
   const generateDynamicStats = () => {
     const now = new Date();

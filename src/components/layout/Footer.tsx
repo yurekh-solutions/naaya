@@ -101,7 +101,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
                 <span className="leading-snug max-w-[250px]">
-                  Hill View Apartments, 302, 2, Hill Rd, W, Bandra West, Mumbai, Maharashtra 400050
+                  Hill View Building, 302, 2, Hill Rd, W, Bandra West, Mumbai, Maharashtra 400050
                 </span>
               </div>
             </div>

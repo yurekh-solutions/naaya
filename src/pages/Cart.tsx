@@ -59,7 +59,7 @@ const Cart = () => {
     message += `Phone: ${customerData.phone}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=918425047309&text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=917039047070&text=${encodedMessage}`;
     
     window.open(whatsappUrl, '_blank');
     clearCart();

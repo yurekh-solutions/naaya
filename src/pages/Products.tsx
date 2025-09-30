@@ -36,19 +36,30 @@ const Products = () => {
   const productsPerPage = 12;
 
   // Filter + Shuffle products
-  const filteredProducts = useMemo(() => {
-    let products = selectedCategory === "All" 
-      ? allProducts 
-      : allProducts.filter(product => product.category === selectedCategory);
+    const filteredProducts = useMemo(() => {
+        let products = selectedCategory === "All"
+            ? allProducts
+            : allProducts.filter(product => product.category === selectedCategory);
 
-    if (searchQuery.trim()) {
-      products = products.filter(product =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
+        // --- THE SEARCH FUNCTIONALITY (Now filtering on Name, Category, and Description) ---
+        if (searchQuery.trim()) {
+            const query = searchQuery.toLowerCase().trim();
+            products = products.filter(product =>
+                // Check if product name, category, or description includes the search query
+                product.name.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query) ||
+                (product.description && product.description.toLowerCase().includes(query))
+            );
+        }
+        // ----------------------------------------
 
-    return shuffleArray(products);
-  }, [selectedCategory, searchQuery]);
+        return shuffleArray(products);
+    }, [selectedCategory, searchQuery]);
+
+  const getCleanName = (fullName: string) => {
+  return fullName.split(" - ")[0]; 
+  // this will remove everything after " - " (brand info)
+};
 
   // Pagination
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -92,6 +103,8 @@ const Products = () => {
   };
 
   const handleViewProduct = (product: Product) => {
+            console.log(`Viewing details for Product ID: ${product.id}`);
+
     navigate(`/product/${product.id}`);
   };
 useEffect(() => {
@@ -153,33 +166,36 @@ useEffect(() => {
 <div className="max-w-2xl mx-auto w-full space-y-6 mb-12">
   
   {/* Search Bar */}
-  <div className="relative">
-    <Input
-      type="text"
-      placeholder="Search products"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      className="pl-12 pr-4 w-full bg-transparent border-glass-border text-foreground placeholder:text-muted-foreground"
-    />
-    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-  </div>
+   <div className="relative">
+                        <Input
+                            type="text"
+                            placeholder="Search products by name, category, or description (e.g., TMT, SS, cement)"
+                            value={searchQuery}
+                            onChange={(e) => {
+                                setSearchQuery(e.target.value);
+                                setCurrentPage(1); // Reset to page 1 on new search
+                            }}
+                            className="pl-12 pr-4 w-full bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-primary"
+                        />
+                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    </div>
 
   {/* Category Tabs */}
   <div className="flex flex-wrap justify-center gap-3">
-    {categories.map((category) => (
-      <Button
-        key={category}
-        variant={selectedCategory === category ? "default" : "outline"}
-        onClick={() => handleCategoryChange(category)}
-        className={selectedCategory === category 
-          ? "bg-gradient-primary hover:shadow-glow transition-all duration-300" 
-          : "glass-card border-glass-border hover:bg-primary/10 hover:border-primary/20"
-        }
-      >
-        {category}
-      </Button>
-    ))}
-  </div>
+                        {categories.map((category) => (
+                            <Button
+                                key={category}
+                                variant={selectedCategory === category ? "default" : "outline"}
+                                onClick={() => handleCategoryChange(category)}
+                                className={selectedCategory === category
+                                    ? "bg-gradient-primary hover:shadow-glow transition-all duration-300 border-none"
+                                    : "glass-card border-glass-border hover:bg-primary/10 hover:border-primary/20 text-white"
+                                }
+                            >
+                                {category}
+                            </Button>
+                        ))}
+                    </div>
 </div>
 
 
@@ -218,9 +234,9 @@ useEffect(() => {
 
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="font-semibold text-foreground  truncate text-sm line-clamp-2 mb-2">
-                    {product.name}
-                  </h3>
+                <h3 className="font-semibold text-foreground truncate text-sm line-clamp-2 mb-2">
+  {product.name.replace(/\d.*|-.*/g, "").trim()}
+</h3>
                   <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
                     {product.category}
                   </Badge>

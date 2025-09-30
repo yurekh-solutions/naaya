@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ import officeBuilding from "../assets/office-building.jpg";
 import constructionSite from "../assets/construction-site.jpg";
 import aiDashboard from "../assets/ai-dashboard.jpg";
 import naayatradeLogo from '../assets/yuvi.png';
+import TeamConnectingModal from "@/components/TeamConnectingModal";
 
 const About = () => {
   const heroRef = useRef(null);
@@ -29,6 +30,8 @@ const About = () => {
   const isAchievementsInView = useInView(achievementsRef, { once: true, margin: "-100px" });
   const isAboutSectionInView = useInView(aboutSectionRef, { once: true, margin: "-100px" });
   const isNaayatradeInView = useInView(naayatradeRef, { once: true, margin: "-100px" });
+  const [showModal, setShowModal] = useState(false);
+  const [contactMethod, setContactMethod] = useState<"whatsapp" | "email" | "phone">("whatsapp");
 
   const carouselImages = [materialWarehouse, constructionSite, aiDashboard, officeBuilding];
 
@@ -70,6 +73,21 @@ const About = () => {
       stats: "40% cost reduction"
     }
   ];
+   const handleContactMethod = (method: "whatsapp" | "email" | "phone", action: string) => {
+    setContactMethod(method);
+    setShowModal(true);
+    
+    setTimeout(() => {
+      if (method === "whatsapp") {
+        window.open(action, '_blank');
+      } else if (method === "phone") {
+        window.location.href = action;
+      } else {
+        window.open(action, '_blank');
+      }
+    }, 2000);
+  };
+
 
   const stats = [
     { 
@@ -815,62 +833,56 @@ const About = () => {
         </section>
 
         {/* Enhanced CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-primary to-accent relative overflow-hidden">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: `url(${materialWarehouse})` }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-accent/90" />
-          
-          <div className="relative container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-                Ready to Transform?
-              </h2>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Join thousands of businesses who trust NaayaConstruction for their 
-                procurement needs. Experience the future of sourcing with our AI-powered platform.
-              </p>
-             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  variant="secondary"
-                  className="bg-white text-primary hover:bg-white/90 text-lg px-6 py-3 transform hover:scale-105 transition-all duration-300"
-                >
-                  <Link to="/products" className="flex items-center space-x-2">
-                    <Building className="h-5 w-5" />
-                    <span>Start Sourcing Now</span>
+               <section className="py-16 mt-16 bg-gradient-primary relative overflow-hidden rounded-2xl">
+            <div className="absolute inset-0 opacity-20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-accent/90" />
+            
+            <div className="relative container mx-auto px-6 text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-3xl lg:text-4xl font-bold text-primary-foreground mb-6">
+                  Ready to Transform?
+                </h2>
+                <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Join thousands of businesses who trust NaayaConstruction for their 
+                  procurement needs. Experience the future of sourcing with our AI-powered platform.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Link to="/products" className="flex items-center justify-center space-x-2">
+                  
+                  <Button 
+                    size="lg" 
+                    variant="secondary"
+                    className="bg-white text-primary hover:bg-white/90 text-lg px-6 py-3 transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Building className="h-5 w-5 mr-2" />
+                    Start Sourcing Now
+                  </Button>
                   </Link>
-                </Button>
-<Button
-  asChild
-  size="lg"
-  variant="outline"
-  className="border-white/30 text-white hover:bg-white/10 text-lg px-6 py-3 backdrop-blur-sm flex items-center gap-2"
->
-  <a 
-    href="https://wa.me/919930670707" 
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    <Users2 className="h-5 w-5" />
-    <span>Contact Sales Team</span>
-  </a>
-</Button>
+                  <Button
+                    onClick={() => handleContactMethod("whatsapp", "https://wa.me/918657494046")}
+                    size="lg"
+                    variant="outline"
+                    className="border-white/30 text-primary-foreground hover:bg-white/10 text-lg px-6 py-3 backdrop-blur-sm"
+                  >
+                    <Users2 className="h-5 w-5 mr-2" />
+                    Contact Sales Team
+                  </Button>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        </div>
 
-
-
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </div>
+          <TeamConnectingModal 
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          contactMethod={contactMethod}
+        />
     </>
   );
 };
