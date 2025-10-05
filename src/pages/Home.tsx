@@ -15,6 +15,11 @@ import heroImage from "../assets/hero-construction.jpg";
 import warehouseImage from "../assets/materials-warehouse.jpg";
 
 const Home = () => {
+      const [step, setStep] = useState(1);
+
+   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
   const statsRef = useRef(null);
   const featuresRef = useRef(null);
   const dashboardRef = useRef(null);
@@ -24,11 +29,8 @@ const Home = () => {
   const isFeaturesInView = useInView(featuresRef, { once: true, margin: "-100px" });
   const isDashboardInView = useInView(dashboardRef, { once: true, margin: "-100px" });
   const isServicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
-    const [step, setStep] = useState(1);
   
- useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [step]);
+
   // Dynamic stats based on current time
   const generateDynamicStats = () => {
     const now = new Date();
@@ -732,10 +734,10 @@ const Home = () => {
         
 
         {/* Market Intelligence Section */}
-        <MarketIntelligence />
+        {/* <MarketIntelligence /> */}
 
         {/* Case Studies Section */}
-        <CaseStudies />
+        {/* <CaseStudies /> */}
 
         {/* Testimonials Section */}
 

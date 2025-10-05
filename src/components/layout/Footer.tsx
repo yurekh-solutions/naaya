@@ -32,7 +32,7 @@ const Footer = () => {
 
   {/* WhatsApp */}
   <a
-    href="https://wa.me/+918657494046"
+    href="https://wa.me/+918657569113"
     target="_blank"
     rel="noopener noreferrer"
     className="group w-14 h-14 sm:w-14 sm:h-14 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300 animate-pulse-glow"
@@ -43,7 +43,7 @@ const Footer = () => {
 
   {/* Phone */}
   <a
-  href="tel:+918657494046"
+  href="tel:+918657569113"
   className="group w-14 h-14 sm:w-14  sm:h-14 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-[#1e2532] shadow-lg hover:shadow-xl backdrop-blur-xl text-white hover:scale-110 transition-all duration-300"
   aria-label="Call us directly"
 >
