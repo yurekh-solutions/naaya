@@ -42,31 +42,6 @@ const getProductFeatures = (product: any) => {
   return features[product.category] || ["High Quality", "Reliable", "Durable", "Cost Effective"];
 };
 
-const getAdditionalInfo = (product: any) => {
-  const additionalInfo: { [key: string]: string[] } = {
-    "Mild Steel": [
-      "Manufactured as per IS standards",
-      "Available in various specifications",
-    ],
-    "Stainless Steel": [
-      "Available in different grades ",
-      "Excellent formability and weldability",
-    ],
-    "Construction Materials": [
-      "Meets BIS quality specifications",
-      "Environment-friendly manufacturing",
-    ],
-    "Electrical Materials": [
-      "ISI marked for quality assurance",
-      "Fire retardant properties",
-    ]
-  };
-  return additionalInfo[product.category] || [
-    "Premium quality assurance",
-    "Industry standard compliance",
-  ];
-};
-
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -84,10 +59,10 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center animate-fade-in">
-        <GlassCard className="p-8 text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-4">Product Not Found</h1>
-          <Button onClick={() => navigate('/products')} className="bg-gradient-primary">
+      <div className="min-h-screen bg-background flex items-center justify-center animate-fade-in px-4">
+        <GlassCard className="p-6 sm:p-8 text-center max-w-md w-full">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-4">Product Not Found</h1>
+          <Button onClick={() => navigate('/products')} className="bg-gradient-primary w-full sm:w-auto">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Products
           </Button>
@@ -127,7 +102,7 @@ const ProductDetail = () => {
           <Button 
             variant="outline" 
             onClick={() => navigate('/products')}
-            className="glass-card border-glass-border hover:bg-primary/10 hover-scale"
+            className="glass-card border-glass-border hover:bg-primary/10 hover-scale w-full sm:w-auto text-sm sm:text-base"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Products
@@ -143,14 +118,14 @@ const ProductDetail = () => {
               <img 
                 src={product.image} 
                 alt={product.name}
-                className="w-full h-[250px] sm:h-[300px] lg:h-[480px] xl:h-[410px] object-cover transition-transform duration-700"
+                className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[410px] object-cover transition-transform duration-700"
                 loading="lazy"
               />
             </GlassCard>
 
             <GlassCard variant="premium" className="p-4 sm:p-6">
-              <div className="sm:text-left">
-                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4 leading-tight truncate">
+              <div className="text-center sm:text-left">
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-3 sm:mb-4 leading-tight">
                   {product.name}
                 </h1>
                 <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 text-sm sm:text-base px-3 sm:px-4 py-1 sm:py-2">
@@ -161,7 +136,7 @@ const ProductDetail = () => {
 
             {/* Product Specifications */}
             <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
+              <h3 className="text-base sm:text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
                 <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
                 Product Specifications
               </h3>
@@ -190,7 +165,7 @@ const ProductDetail = () => {
           <div className="space-y-4 sm:space-y-6">
             {/* Product Header */}
             <GlassCard className="p-4 sm:p-6">
-              <h2 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center">
+              <h2 className="text-base sm:text-lg lg:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center">
                 <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
                 Product Description
               </h2>
@@ -202,9 +177,9 @@ const ProductDetail = () => {
                   <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Applications</h4>
                   <ul className="text-xs sm:text-sm space-y-1">
                     {getProductApplications(product).map((app, index) => (
-                      <li key={index} className="flex items-center animate-fade-in" style={{ animationDelay: `${0.6 + index * 0.1}s` }}>
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2 animate-pulse flex-shrink-0"></span>
-                        {app}
+                      <li key={index} className="flex items-start animate-fade-in" style={{ animationDelay: `${0.6 + index * 0.1}s` }}>
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-1.5 animate-pulse flex-shrink-0"></span>
+                        <span>{app}</span>
                       </li>
                     ))}
                   </ul>
@@ -213,9 +188,9 @@ const ProductDetail = () => {
                   <h4 className="font-semibold text-foreground mb-2 text-sm sm:text-base">Features</h4>
                   <ul className="text-xs sm:text-sm space-y-1">
                     {getProductFeatures(product).map((feature, index) => (
-                      <li key={index} className="flex items-center animate-fade-in" style={{ animationDelay: `${0.8 + index * 0.1}s` }}>
-                        <span className="w-1.5 h-1.5 bg-accent rounded-full mr-2 animate-pulse flex-shrink-0"></span>
-                        {feature}
+                      <li key={index} className="flex items-start animate-fade-in" style={{ animationDelay: `${0.8 + index * 0.1}s` }}>
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full mr-2 mt-1.5 animate-pulse flex-shrink-0"></span>
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -225,8 +200,8 @@ const ProductDetail = () => {
 
             {/* Order Form */}
             <GlassCard variant="premium" className="p-4 sm:p-6">
-              <h3 className="text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
-                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3 "></span>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground mb-4 sm:mb-6 flex items-center">
+                <span className="w-1 h-5 sm:h-6 bg-gradient-primary rounded-full mr-2 sm:mr-3"></span>
                 Request Quote
               </h3>
               <div className="space-y-4 sm:space-y-6">
@@ -235,16 +210,16 @@ const ProductDetail = () => {
                     Select Brand <span className="text-destructive ml-1">*</span>
                   </Label>
                   <Select value={brand} onValueChange={setBrand}>
-                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 ">
+                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50">
                       <SelectValue placeholder="Choose a preferred brand" />
                     </SelectTrigger>
-                    <SelectContent className="bg-background border-glass-border ">
-                      <SelectItem value="tata" className="hover-scale">TATA Steel</SelectItem>
-                      <SelectItem value="sail" className="hover-scale">SAIL</SelectItem>
-                      <SelectItem value="jsw" className="hover-scale">JSW Steel</SelectItem>
-                      <SelectItem value="jindal" className="hover-scale">Jindal Steel</SelectItem>
-                      <SelectItem value="essar" className="hover-scale">Essar Steel</SelectItem>
-                      <SelectItem value="other" className="hover-scale">Other Brand</SelectItem>
+                    <SelectContent className="bg-background border-glass-border">
+                      <SelectItem value="tata" className="hover-scale text-sm sm:text-base">TATA Steel</SelectItem>
+                      <SelectItem value="sail" className="hover-scale text-sm sm:text-base">SAIL</SelectItem>
+                      <SelectItem value="jsw" className="hover-scale text-sm sm:text-base">JSW Steel</SelectItem>
+                      <SelectItem value="jindal" className="hover-scale text-sm sm:text-base">Jindal Steel</SelectItem>
+                      <SelectItem value="essar" className="hover-scale text-sm sm:text-base">Essar Steel</SelectItem>
+                      <SelectItem value="other" className="hover-scale text-sm sm:text-base">Other Brand</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -254,17 +229,17 @@ const ProductDetail = () => {
                     Select Material Grade <span className="text-destructive ml-1">*</span>
                   </Label>
                   <Select value={material} onValueChange={setMaterial}>
-                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 ">
+                    <SelectTrigger className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50">
                       <SelectValue placeholder="Choose material specification" />
                     </SelectTrigger>
-                    <SelectContent className="bg-background border-glass-border ">
-                      <SelectItem value="is2062-a" className="hover-scale">IS2062 Grade A</SelectItem>
-                      <SelectItem value="is2062-b" className="hover-scale">IS2062 Grade B</SelectItem>
-                      <SelectItem value="is2062-c" className="hover-scale">IS2062 Grade C</SelectItem>
-                      <SelectItem value="ss316" className="hover-scale">SS316 (Marine Grade)</SelectItem>
-                      <SelectItem value="ss304" className="hover-scale">SS304 (Food Grade)</SelectItem>
-                      <SelectItem value="ss201" className="hover-scale">SS201 (General Purpose)</SelectItem>
-                      <SelectItem value="custom" className="hover-scale">Custom Specification</SelectItem>
+                    <SelectContent className="bg-background border-glass-border">
+                      <SelectItem value="is2062-a" className="hover-scale text-sm sm:text-base">IS2062 Grade A</SelectItem>
+                      <SelectItem value="is2062-b" className="hover-scale text-sm sm:text-base">IS2062 Grade B</SelectItem>
+                      <SelectItem value="is2062-c" className="hover-scale text-sm sm:text-base">IS2062 Grade C</SelectItem>
+                      <SelectItem value="ss316" className="hover-scale text-sm sm:text-base">SS316 (Marine Grade)</SelectItem>
+                      <SelectItem value="ss304" className="hover-scale text-sm sm:text-base">SS304 (Food Grade)</SelectItem>
+                      <SelectItem value="ss201" className="hover-scale text-sm sm:text-base">SS201 (General Purpose)</SelectItem>
+                      <SelectItem value="custom" className="hover-scale text-sm sm:text-base">Custom Specification</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -280,7 +255,7 @@ const ProductDetail = () => {
                     max="10000"
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
-                    className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50 "
+                    className="bg-transparent border-glass-border h-10 sm:h-12 text-sm sm:text-base hover:border-primary/50"
                     placeholder="Enter required quantity"
                   />
                   <p className="text-xs text-muted-foreground mt-1">Minimum order quantity: 1 MT</p>
@@ -288,7 +263,7 @@ const ProductDetail = () => {
               </div>
               <Button
                 onClick={handleAddToRFQ}
-                className="w-full mt-4 sm:mt-6 bg-gradient-primary hover:shadow-glow text-sm sm:text-base font-semibold h-12 sm:h-12 lg:h-12 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full mt-4 sm:mt-6 bg-gradient-primary hover:shadow-glow text-sm sm:text-base font-semibold h-10 sm:h-12 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isAddDisabled}
               >
                 <Plus className="h-4 w-4 mr-2" />

@@ -17,6 +17,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import FAQ from "./components/FAQ";
 import Bani from "./pages/Bani";
+import ScrollToTop from "./components/ScrollToTop";
 
 // import Terms from "./pages/TermsCondition";
 
@@ -28,8 +29,11 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+                          <ScrollToTop />
+
         <div className="min-h-screen bg-background flex flex-col">
           <Header />
+
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />

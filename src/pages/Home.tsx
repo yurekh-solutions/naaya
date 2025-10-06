@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef , useState, useEffect} from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -13,13 +13,14 @@ import MarketIntelligence from "@/components/MarketIntelligence";
 import CaseStudies from "@/components/CaseStudies";
 import heroImage from "../assets/hero-construction.jpg";
 import warehouseImage from "../assets/materials-warehouse.jpg";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Home = () => {
-      const [step, setStep] = useState(1);
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [step]);
   const statsRef = useRef(null);
   const featuresRef = useRef(null);
   const dashboardRef = useRef(null);
@@ -212,6 +213,8 @@ const Home = () => {
 
   return (
     <>
+      <ScrollToTop />
+
       <SEOHead
         title="NaayaConstruction - AI-Powered Construction Material Procurement Platform"
         description="Revolutionize your construction material sourcing with NaayaConstruction's AI-powered platform. Get instant quotes from 500+ verified suppliers across India. TMT, Steel, Cement & more."
@@ -221,7 +224,7 @@ const Home = () => {
 
       <div className="min-h-screen bg-background">
         {/* Enhanced Hero Section */}
-             <section className="relative overflow-hidden py-20 lg:py-32">
+        <section className="relative overflow-hidden py-20 lg:py-32">
           {/* Background with Parallax Effect */}
           <motion.div
             className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -461,6 +464,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+
         <section className="py-12  bg-gradient sm:py-16 lg:py-24">
   <div className="container mx-auto px-3 sm:px-4">
     {/* Section Heading */}
@@ -556,6 +560,7 @@ const Home = () => {
     </div>
   </div>
 </section>
+
  <section className="py-20 bg-gradient-subtle" ref={servicesRef}>
           <div className="container mx-auto px-4">
             <motion.div
@@ -593,9 +598,6 @@ const Home = () => {
                       </div>
                       <h3 className="text-xl font-semibold text-foreground mb-3">{category.title}</h3>
                       <p className="text-muted-foreground mb-4 text-sm">{category.description}</p>
-                      <div className="space-y-1">
-                       
-                      </div>
                     </div>
                   </GlassCard>
                 </motion.div>
@@ -727,21 +729,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Product Categories Section */}
-       
-
-        {/* How It Works Section */}
-        
-
-        {/* Market Intelligence Section */}
-        {/* <MarketIntelligence /> */}
-
-        {/* Case Studies Section */}
-        {/* <CaseStudies /> */}
-
-        {/* Testimonials Section */}
-
-        {/* FAQ Section */}
         <FAQ />
         <Testimonials />
 
@@ -781,12 +768,11 @@ const Home = () => {
                   variant="secondary" 
                   className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300"
                 >
-                                      <Link to="/products" className="flex items-center space-x-2">
-
-                  <div className="flex items-center space-x-2">
-                    <span>Get Started Today</span>
-                    <ArrowRight className="h-6 w-6" />
-                  </div>
+                  <Link to="/products" className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2">
+                      <span>Get Started Today</span>
+                      <ArrowRight className="h-6 w-6" />
+                    </div>
                   </Link>
                 </Button>
                 <Button 
@@ -794,12 +780,11 @@ const Home = () => {
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 text-xl px-12 py-6 backdrop-blur-sm"
                 >
-                                      <Link to="/about" className="flex items-center space-x-2">
-
-                  <div className="flex items-center space-x-2">
-                    <span>Learn More</span>
-                    <Play className="h-6 w-6" />
-                  </div>
+                  <Link to="/about" className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-2">
+                      <span>Learn More</span>
+                      <Play className="h-6 w-6" />
+                    </div>
                   </Link>
                 </Button>
               </div>
