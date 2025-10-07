@@ -204,7 +204,7 @@ const CustomProductRequest = ({ searchQuery }: CustomProductRequestProps) => {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full bg-gradient-primary hover:shadow-glow text-base sm:text-lg font-semibold h-12 sm:h-14 transition-all duration-300 animate-fade-in animation-delay-200"
+            className="w-full  bg-gradient-to-r from-orange-500 to-red-500 hover:scale-105 transition-all duration-300 text-base sm:text-lg font-semibold h-12 sm:h-14 transition-all duration-300 animate-fade-in animation-delay-200"
           >
             <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
             Send Inquiry via WhatsApp

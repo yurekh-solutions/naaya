@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import baniRobotAvatar from '@/assets/bani-avatar.png';
-
+import robot from "@/assets/robot.jpeg"
 interface AIAvatarProps {
   isOnline?: boolean;
   isSpeaking?: boolean;
@@ -38,7 +38,7 @@ const AIAvatar: React.FC<AIAvatarProps> = ({
         whileTap={{ scale: 0.95 }}
       >
         <img
-          src={baniRobotAvatar}
+          src={robot}
           alt="Bani AI Assistant"
           className="w-full h-full object-cover rounded-full"
         />

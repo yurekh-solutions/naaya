@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { GlassCard } from '@/components/ui/glass-card';
-import AIAvatar from '@/components/VoiceAI/AIAvatar';
-import EnhancedBaaniChat from '@/components/VoiceAI/BaaniChat';
-import EnhancedVoiceAIButton from '@/components/VoiceAI/VoiceAIButton';
-import SEOHead from '@/components/SEOHead';
-import { 
-  Mic, 
-  MessageCircle, 
-  Zap, 
-  Shield, 
+  import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { GlassCard } from "@/components/ui/glass-card";
+import AIAvatar from "@/components/VoiceAI/AIAvatar";
+import EnhancedBaaniChat from "@/components/VoiceAI/BaaniChat";
+import SEOHead from "@/components/SEOHead";
+import {
+  Mic,
+  MessageCircle,
+  Zap,
+  Shield,
   Globe,
   ArrowRight,
   Volume2,
@@ -21,45 +20,18 @@ import {
   CheckCircle,
   Languages,
   Bot,
-  Sparkles
-} from 'lucide-react';
+  Sparkles,
+} from "lucide-react";
 
 const Bani = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [currentStat, setCurrentStat] = useState(0);
 
   const stats = [
-    { number: '24/7', label: 'Available', icon: Clock },
-    { number: '8+', label: 'Languages', icon: Languages },
-    { number: '500+', label: 'Verified Suppliers', icon: Users },
-    { number: '1000+', label: 'Materials', icon: Package },
-  ];
-
-  const features = [
-    {
-      icon: Languages,
-      title: "Multilingual Support",
-      description: "Speak in English, Hindi, Tamil, Telugu, Bengali, Gujarati, Marathi, or Punjabi - Bani understands them all",
-      gradient: "from-blue-500 to-purple-600"
-    },
-    {
-      icon: Bot,
-      title: "AI-Powered Intelligence",
-      description: "Advanced procurement knowledge with real-time market insights, pricing, and supplier intelligence",
-      gradient: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Shield,
-      title: "Secure & Verified",
-      description: "All suppliers verified, quality assured, with enterprise-grade security and privacy protection",
-      gradient: "from-green-500 to-emerald-600"
-    },
-    {
-      icon: Zap,
-      title: "Instant Processing",
-      description: "Get quotes, prices, and supplier connections within minutes, not days",
-      gradient: "from-yellow-500 to-orange-500"
-    }
+    { number: "24/7", label: "Available", icon: Clock },
+    { number: "8+", label: "Languages", icon: Languages },
+    { number: "500+", label: "Verified Suppliers", icon: Users },
+    { number: "1000+", label: "Materials", icon: Package },
   ];
 
   const capabilities = [
@@ -70,7 +42,7 @@ const Bani = () => {
     "Technical specifications and material recommendations",
     "Market trend analysis and procurement insights",
     "Bulk purchase negotiations and discount optimization",
-    "Project material estimation and planning assistance"
+    "Project material estimation and planning assistance",
   ];
 
   const testimonials = [
@@ -78,23 +50,22 @@ const Bani = () => {
       name: "राज कुमार",
       location: "Delhi",
       text: "Bani ने मेरी TMT steel की procurement में बहुत मदद की। हिंदी में बात करके मुझे सभी जानकारी मिली।",
-      rating: 5
+      rating: 5,
     },
     {
       name: "Priya Sharma",
       location: "Mumbai",
       text: "Amazing AI assistant! Got competitive cement prices from 5 suppliers within 30 minutes. Highly recommended!",
-      rating: 5
+      rating: 5,
     },
     {
       name: "அருண் குமார்",
-      location: "Chennai", 
+      location: "Chennai",
       text: "பானி எனக்கு தமிழில் பேசி construction materials கிடைக்க உதவியது. மிகவும் பயனுள்ளது!",
-      rating: 5
-    }
+      rating: 5,
+    },
   ];
 
-  // Rotate stats every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentStat((prev) => (prev + 1) % stats.length);
@@ -114,18 +85,15 @@ const Bani = () => {
         keywords="AI procurement assistant, multilingual chatbot, construction materials, voice AI, Bani AI, TMT steel prices, cement suppliers, construction procurement, Hindi AI assistant"
       />
 
-      <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 lg:py-32">
-          {/* Animated Background */}
+      <div className="min-h-screen bg-background overflow-hidden">
+        {/* HERO SECTION */}
+        <section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
           <div className="absolute inset-0 bg-gradient-subtle" />
-          
-        
 
           <div className="relative container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <motion.div 
+              {/* Left content */}
+              <motion.div
                 className="space-y-8"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -148,21 +116,24 @@ const Bani = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 1 }}
                 >
-                  Meet 
-                   <span className='bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent'>  Bani</span>
+                  Meet{" "}
+                  <span className="bg-gradient-to-r from-primary via-accent to-primary-glow bg-clip-text text-transparent">
+                    Bani
+                  </span>
                 </motion.h1>
 
                 <motion.p
-                  className="text-xl text-muted-foreground max-w-2xl leading-relaxed"
+                  className="text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 1 }}
                 >
-                  Your multilingual AI procurement expert. Get instant construction material 
-                  sourcing assistance in 8+ languages with advanced AI intelligence, 
-                  real-time pricing, and verified supplier networks.
+                  Your multilingual AI procurement expert. Get instant
+                  construction material sourcing assistance in 8+ languages with
+                  advanced AI intelligence, real-time pricing, and verified
+                  supplier networks.
                 </motion.p>
-                
+
                 <motion.div
                   className="flex flex-col sm:flex-row gap-4"
                   initial={{ opacity: 0, y: 30 }}
@@ -178,19 +149,19 @@ const Bani = () => {
                     Start Voice Chat
                     <ArrowRight className="h-5 w-5 ml-2" />
                   </Button>
-                  
+
                   <Button
                     variant="outline"
                     size="lg"
                     onClick={() => setIsChatOpen(true)}
-                    className="glass-morphism border-white/30 text-foreground hover:bg-white/10 text-lg px-8 py-4 "
+                    className="glass-morphism border-white/30 text-foreground hover:bg-white/10 text-lg px-8 py-4"
                   >
                     <MessageCircle className="h-5 w-5 mr-2" />
                     Text Chat
                   </Button>
                 </motion.div>
 
-                {/* Animated Stats */}
+                {/* Stats */}
                 <motion.div
                   className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8"
                   initial={{ opacity: 0 }}
@@ -201,88 +172,88 @@ const Bani = () => {
                     <motion.div
                       key={index}
                       className={`text-center p-4 glass-card transition-all duration-500 ${
-                        currentStat === index ? 'shadow-ai-glow scale-105' : ''
+                        currentStat === index ? "shadow-ai-glow scale-105" : ""
                       }`}
                       whileHover={{ scale: 1.05 }}
                     >
                       <stat.icon className="h-6 w-6 mx-auto mb-2 text-primary" />
-                      <div className="text-2xl font-bold text-foreground">{stat.number}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="text-2xl font-bold text-foreground">
+                        {stat.number}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {stat.label}
+                      </div>
                     </motion.div>
                   ))}
                 </motion.div>
               </motion.div>
 
-              {/* Right Content - Enhanced AI Visualization */}
-         <motion.div 
-  className="space-y-6"
-  initial={{ opacity: 0, x: 50 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ delay: 0.4, duration: 1 }}
->
-  <GlassCard variant="" className="p-6 sm:p-8 text-center relative overflow-hidden">
-    {/* Animated background pattern */}
-    <div className="absolute inset-0 opacity-10">
-      <div className="absolute inset-0 bg-gradient-ai" />
-      <motion.div
-        className="absolute inset-0"
-        animate={{ 
-          background: [
-            "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-            "radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-            "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%)"
-          ]
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-    </div>
+              {/* Right Content */}
+              <motion.div
+                className="space-y-6"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 1 }}
+              >
+                <GlassCard className="p-6 sm:p-8 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute inset-0 bg-gradient-ai" />
+                    <motion.div
+                      className="absolute inset-0"
+                      animate={{
+                        background: [
+                          "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+                          "radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+                          "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 0%, transparent 50%)",
+                        ],
+                      }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                    />
+                  </div>
 
-    <div className="relative z-10">
-      {/* Centered Avatar */}
-      <div className="flex justify-center mb-6">
-        <AIAvatar 
-          size="xl" 
-          isOnline={true}
-          className="w-28 h-28 sm:w-32 sm:h-32" 
-        />
-      </div>
+                  <div className="relative z-10">
+                    <div className="flex justify-center mb-6">
+                      <AIAvatar
+                        size="xl"
+                        isOnline={true}
+                        className="w-28 h-28 sm:w-32 sm:h-32"
+                      />
+                    </div>
 
-      <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Bani is Online</h3>
-      <p className="text-sm sm:text-base text-muted-foreground mb-6">
-        Advanced AI • Multilingual • Always Learning
-      </p>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-        <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          <span className="text-foreground">Connected</span>
-        </div>
-        <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
-          <Volume2 className="h-4 w-4 text-primary" />
-          <span className="text-foreground">Voice Ready</span>
-        </div>
-        <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
-          <Languages className="h-4 w-4 text-primary" />
-          <span className="text-foreground">8+ Languages</span>
-        </div>
-        <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
-          <TrendingUp className="h-4 w-4 text-primary" />
-          <span className="text-foreground">Live Data</span>
-        </div>
-      </div>
-    </div>
-  </GlassCard>
-</motion.div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
+                      Bani is Online
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-6">
+                      Advanced AI • Multilingual • Always Learning
+                    </p>
 
+                    <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        <span className="text-foreground">Connected</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
+                        <Volume2 className="h-4 w-4 text-primary" />
+                        <span className="text-foreground">Voice Ready</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
+                        <Languages className="h-4 w-4 text-primary" />
+                        <span className="text-foreground">8+ Languages</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2 glass-morphism p-3 rounded-lg">
+                        <TrendingUp className="h-4 w-4 text-primary" />
+                        <span className="text-foreground">Live Data</span>
+                      </div>
+                    </div>
+                  </div>
+                </GlassCard>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Enhanced Features Section */}
-       
-
-        {/* Capabilities Section */}
-        <section className="py-20">
+        {/* CAPABILITIES SECTION */}
+        <section className="py-16 sm:py-20">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -295,10 +266,10 @@ const Bani = () => {
                   Advanced AI Capabilities
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8">
-                  Bani combines cutting-edge AI with deep procurement expertise to deliver 
-                  unmatched assistance:
+                  Bani combines cutting-edge AI with deep procurement expertise
+                  to deliver unmatched assistance:
                 </p>
-                
+
                 <div className="space-y-4">
                   {capabilities.map((capability, index) => (
                     <motion.div
@@ -322,29 +293,47 @@ const Bani = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <GlassCard variant="premium" className="p-8">
+                <GlassCard className="p-8">
                   <div className="text-center mb-6">
                     <div className="w-20 h-20 bg-gradient-ai rounded-full flex items-center justify-center mx-auto mb-4">
                       <Zap className="h-10 w-10 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">Get Started Instantly</h3>
-                    <p className="text-muted-foreground">No signup required - start chatting immediately</p>
+                    <h3 className="text-2xl font-bold text-foreground mb-2">
+                      Get Started Instantly
+                    </h3>
+                    <p className="text-muted-foreground">
+                      No signup required - start chatting immediately
+                    </p>
                   </div>
-                  
+
                   <div className="space-y-4">
                     {[
-                      { icon: Users, text: "Connect with 500+ verified suppliers across India" },
-                      { icon: Package, text: "Access comprehensive material database" },
-                      { icon: Globe, text: "Pan-India coverage with local expertise" },
-                      { icon: TrendingUp, text: "Real-time market insights and pricing" }
+                      {
+                        icon: Users,
+                        text: "Connect with 500+ verified suppliers across India",
+                      },
+                      {
+                        icon: Package,
+                        text: "Access comprehensive material database",
+                      },
+                      {
+                        icon: Globe,
+                        text: "Pan-India coverage with local expertise",
+                      },
+                      {
+                        icon: TrendingUp,
+                        text: "Real-time market insights and pricing",
+                      },
                     ].map((item, index) => (
-                      <motion.div 
+                      <motion.div
                         key={index}
                         className="flex items-center space-x-3 p-3 bg-secondary/20 rounded-lg"
                         whileHover={{ scale: 1.02 }}
                       >
                         <item.icon className="h-5 w-5 text-primary" />
-                        <span className="text-sm text-foreground">{item.text}</span>
+                        <span className="text-sm text-foreground">
+                          {item.text}
+                        </span>
                       </motion.div>
                     ))}
                   </div>
@@ -354,8 +343,8 @@ const Bani = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-subtle">
+        {/* TESTIMONIALS */}
+        <section className="py-16 sm:py-20 bg-gradient-subtle">
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"
@@ -384,10 +373,14 @@ const Bani = () => {
                   <GlassCard className="p-6 h-full">
                     <div className="flex mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-yellow-500 text-lg">★</span>
+                        <span key={i} className="text-yellow-500 text-lg">
+                          ★
+                        </span>
                       ))}
                     </div>
-                    <p className="text-muted-foreground mb-4 italic">"{testimonial.text}"</p>
+                    <p className="text-muted-foreground mb-4 italic">
+                      "{testimonial.text}"
+                    </p>
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-ai rounded-full flex items-center justify-center">
                         <span className="text-white font-bold">
@@ -395,8 +388,12 @@ const Bani = () => {
                         </span>
                       </div>
                       <div>
-                        <div className="font-semibold text-foreground">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+                        <div className="font-semibold text-foreground">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          {testimonial.location}
+                        </div>
                       </div>
                     </div>
                   </GlassCard>
@@ -406,10 +403,9 @@ const Bani = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-ai relative overflow-hidden">
+        {/* CTA */}
+        <section className="py-16 sm:py-20 bg-gradient-ai relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 to-accent/95" />
-          
           <div className="relative container mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -421,10 +417,11 @@ const Bani = () => {
                 Ready to Experience Bani?
               </h2>
               <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Join thousands of construction professionals who trust Bani for their 
-                procurement needs. Start your conversation now and experience the future.
+                Join thousands of construction professionals who trust Bani for
+                their procurement needs. Start your conversation now and
+                experience the future.
               </p>
-              <Button 
+              <Button
                 size="lg"
                 onClick={() => setIsChatOpen(true)}
                 className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-6 transform hover:scale-105 transition-all duration-300 shadow-2xl"
@@ -437,9 +434,8 @@ const Bani = () => {
           </div>
         </section>
       </div>
-      
+
       <EnhancedBaaniChat isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
-      {/* <EnhancedVoiceAIButton /> */}
     </>
   );
 };
