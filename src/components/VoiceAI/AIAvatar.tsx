@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import robot from "@/assets/robot.jpeg";
+import baani from "@/assets/baaniiii.png";
 
 interface AIAvatarProps {
   isOnline?: boolean;
@@ -48,7 +48,7 @@ const AIAvatar: React.FC<AIAvatarProps> = ({
         {/* White circular background for the avatar */}
         <div className="rounded-full bg-white flex items-center justify-center overflow-hidden aspect-square">
           <img
-            src={robot}
+            src={baani }
             alt="Bani AI Assistant"
             className="w-[90%] h-[90%] object-contain transition-transform duration-700 hover:scale-110"
             style={{
