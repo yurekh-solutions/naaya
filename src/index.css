@@ -635,6 +635,15 @@ All colors MUST be HSL.
     flex: 0 0 auto;
     scroll-snap-align: start;
   }
+.shadow-ai-glow {
+  box-shadow:
+    0 0 15px rgba(255, 94, 0, 0.4),
+    0 0 30px rgba(255, 120, 0, 0.3),
+    0 0 45px rgba(255, 145, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
 
   /* New Animation Keyframes */
   @keyframes gradient-shift {
