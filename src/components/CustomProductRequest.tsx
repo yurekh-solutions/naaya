@@ -55,7 +55,7 @@ const CustomProductRequest = ({ searchQuery }: CustomProductRequestProps) => {
 *Via:* Naaya Construction Website`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918657569113?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/917039047070?text=${encodedMessage}`;
 
     // Open WhatsApp
     window.open(whatsappUrl, "_blank");
