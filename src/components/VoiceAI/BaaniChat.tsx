@@ -89,7 +89,7 @@ const BaaniChat: React.FC<EnhancedBaaniChatProps> = ({ isOpen, onClose }) => {
       setTimeout(() => {
         const greeting = currentLanguage === 'hindi'
           ? "नमस्ते! मैं Bani हूं, आपकी AI procurement assistant। मैं NaayaConstruction के लिए काम करती हूं और आपकी construction materials की जरूरतों में मदद करने के लिए यहां हूं। आप मुझसे किसी भी material के बारे में पूछ सकते हैं - मुझे सब कुछ पता है! कैसे मदद कर सकती हूं?"
-          : "Hello! I'm Bani, your AI procurement assistant at NaayaConstruction. I'm here to help you with all your construction material needs. Ask me anything - I know everything about procurement, pricing, suppliers, and materials! How can I assist you today?";
+          : "Hello! I'm Bani, your AI procurement assistant at NaayaConstruction. I'm here to help you with all your construction material needs.  How can I assist you today?";
         addBotMessage(greeting);
         conversationHistory.current = [];
       }, 800);
